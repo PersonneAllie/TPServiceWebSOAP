@@ -1,0 +1,13 @@
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelSansDistribution\LogiqueMetierHotel\bin\Debug\netcoreapp3.1\LogiqueMetierHotel.exe
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelSansDistribution\LogiqueMetierHotel\bin\Debug\netcoreapp3.1\LogiqueMetierHotel.deps.json
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelSansDistribution\LogiqueMetierHotel\bin\Debug\netcoreapp3.1\LogiqueMetierHotel.runtimeconfig.json
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelSansDistribution\LogiqueMetierHotel\bin\Debug\netcoreapp3.1\LogiqueMetierHotel.runtimeconfig.dev.json
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelSansDistribution\LogiqueMetierHotel\bin\Debug\netcoreapp3.1\LogiqueMetierHotel.dll
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelSansDistribution\LogiqueMetierHotel\bin\Debug\netcoreapp3.1\LogiqueMetierHotel.pdb
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelSansDistribution\LogiqueMetierHotel\obj\Debug\netcoreapp3.1\LogiqueMetierHotel.csprojAssemblyReference.cache
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelSansDistribution\LogiqueMetierHotel\obj\Debug\netcoreapp3.1\LogiqueMetierHotel.AssemblyInfoInputs.cache
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelSansDistribution\LogiqueMetierHotel\obj\Debug\netcoreapp3.1\LogiqueMetierHotel.AssemblyInfo.cs
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelSansDistribution\LogiqueMetierHotel\obj\Debug\netcoreapp3.1\LogiqueMetierHotel.csproj.CoreCompileInputs.cache
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelSansDistribution\LogiqueMetierHotel\obj\Debug\netcoreapp3.1\LogiqueMetierHotel.dll
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelSansDistribution\LogiqueMetierHotel\obj\Debug\netcoreapp3.1\LogiqueMetierHotel.pdb
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelSansDistribution\LogiqueMetierHotel\obj\Debug\netcoreapp3.1\LogiqueMetierHotel.genruntimeconfig.cache
