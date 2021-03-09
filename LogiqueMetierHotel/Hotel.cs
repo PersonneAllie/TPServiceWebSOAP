@@ -37,7 +37,32 @@ namespace LogiqueMetierHotel
 
         public void retraitReservation(Reservation r)
         {
+            if(DateTime.Now > r.dateDepart) { 
             this.ListReservations.Remove(r);
+                }
+        }
+
+        public void InitChambre()
+        {
+            var rand = new Random();
+            int numChambre = 0;
+            int x = rand.Next(10, 40);
+            for(int i = 0; i < x; i++)
+            {
+                int lits = rand.Next(1, 4);
+                Chambre chambre = new Chambre(numChambre, lits);
+                numChambre += 1;
+                this.ListChambres.Add(chambre);
+
+            }
+        }
+
+        public void afficherChambre()
+        {
+            foreach(Chambre x in this.ListChambres)
+            {
+                Console.WriteLine(x.ToString());
+            }
         }
 
         public Chambre chambreDisponible(DateTime debut, DateTime fin, int nbLits)
@@ -48,13 +73,14 @@ namespace LogiqueMetierHotel
                 {
                     return x;
                 }
-                else
-                {
-                    return x;
-                }
             }
+          
             return null;
         }
 
+        public override string ToString()
+        {
+            return base.ToString() + "\n - " + this.nomHotel + "\n - " + this.adresseHotel + "\n - " + this.ville + "\n - " + this.paysHotel + "\n - " + this.nbEtoiles + "\n - " + this.prixNuit;
+        }
     }
 }
