@@ -65,7 +65,7 @@ namespace LogiqueMetierHotel
             }
         }
 
-        public Chambre chambreDisponible(DateTime debut, DateTime fin, int nbLits)
+     /*   public Chambre chambreDisponible(DateTime debut, DateTime fin, int nbLits)
         {
             foreach(Chambre x in this.ListChambres)
             {
@@ -76,6 +76,44 @@ namespace LogiqueMetierHotel
             }
           
             return null;
+        }*/
+
+        public Chambre chambreDisponible(DateTime debut, DateTime fin, int nbLits)
+        {
+            foreach (Chambre x in this.ListChambres)
+            {
+                if (x.nbLits >= nbLits) //On trouve une chambre au nombre de lits convenable
+                {
+                    bool alwaysAvailable = true;
+                    bool usedInTheTimeFrame = false;
+                    foreach (Reservation y in this.ListReservations)
+                    {
+                        if (y.numChambre == x.numChambre)
+                        {
+                            alwaysAvailable = false; //la chambre est utilisé au moins une fois car elle est dans la liste
+                            if ((y.dateArrivée >= debut & y.dateDepart <= fin)//cas 1 de reservation dans la période 
+                                   | (y.dateArrivée < debut & y.dateDepart > fin)//cas 2 de reservation avant et et après la période 
+                                   | (y.dateArrivée < debut & y.dateDepart <= fin)//cas 3 de reservation avant la période et qui se termine pendant
+                                   | (y.dateArrivée >= debut & y.dateDepart < fin)//cas 4 de reservation pendant la période mais que se termine avant
+                            )
+                            {
+                                usedInTheTimeFrame = true;
+                            }
+                        }
+                    }
+                    if (alwaysAvailable == true)//la chambre n'est jamais utilisé 
+                    {
+                        return x;
+                    }
+
+                    if (alwaysAvailable == false & usedInTheTimeFrame == false)//la chambre n'est jamais utilisé dans la période
+                    {
+                        return x;
+                    }
+                    //ici le cas echec donc on continue a parcourir la liste ce chambres de l'hotel
+                }
+            }
+            return null; //l'hotel n'as pas de chambre ou on n'a rien trouvé
         }
 
         public override string ToString()
