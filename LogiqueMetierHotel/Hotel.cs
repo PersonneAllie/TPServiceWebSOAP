@@ -29,6 +29,11 @@ namespace LogiqueMetierHotel
             this.prixNuit = prix;
         }
 
+        public Hotel()
+        {
+
+        }
+
 
         public void ajoutReservation(Reservation r)
         {
@@ -120,5 +125,15 @@ namespace LogiqueMetierHotel
         {
             return base.ToString() + "\n - " + this.nomHotel + "\n - " + this.adresseHotel + "\n - " + this.ville + "\n - " + this.paysHotel + "\n - " + this.nbEtoiles + "\n - " + this.prixNuit;
         }
+
+        public void ToStringListReservation()
+        {
+                foreach (Reservation z in this.ListReservations)
+                {
+                    Console.WriteLine(z.ToString());
+                }
+        }
+
+      
     }
 }
