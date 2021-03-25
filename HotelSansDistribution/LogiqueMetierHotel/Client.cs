@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LogiqueMetierHotel
 {
-    class Client
+    public class Client
     {
         public static int idClient = 0;
         public String nomClient;
@@ -19,6 +19,11 @@ namespace LogiqueMetierHotel
             this.prenomClient = newPrenomClient;
             this.emailClient = newEmailClient;
             this.numeroCarteBancaire = newNumeroCarteBancaire;
+        }
+
+        public Client()
+        {
+
         }
 
 

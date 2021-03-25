@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LogiqueMetierHotel
 {
-    class Hotel
+    public class Hotel
     {
         public static int idHotel = 0;
         public List<Reservation> ListReservations;

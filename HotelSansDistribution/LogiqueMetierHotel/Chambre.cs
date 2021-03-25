@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LogiqueMetierHotel
 {
-    class Chambre
+    public class Chambre
     {
         public int numChambre;
         public int nbLits;
@@ -14,6 +14,12 @@ namespace LogiqueMetierHotel
             this.numChambre = num;
             this.nbLits = lits;
         }
+
+        public Chambre()
+        {
+
+        }
+            
 
 
         public override string ToString()

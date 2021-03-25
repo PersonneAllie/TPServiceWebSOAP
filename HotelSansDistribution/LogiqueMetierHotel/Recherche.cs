@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LogiqueMetierHotel
 {
-    class Recherche
+    public class Recherche
     {
         public static int idRecherche = 0;
         public String villeDeSejour;

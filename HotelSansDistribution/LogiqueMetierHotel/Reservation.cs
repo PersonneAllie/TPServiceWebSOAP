@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LogiqueMetierHotel
 {
-    class Reservation
+    public class Reservation
     {
         public  static int idReservation = 0;
         public String nomClient;
