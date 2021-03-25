@@ -49,7 +49,7 @@ namespace LogiqueMetierHotel
                 switch (cmd)
                 {
                     case "0":
-                        Console.WriteLine("quittez");
+                        Console.WriteLine("Aurevoir, bonne journée à vous !");
                         break;
                     case "1":
                         Recherche x = new Recherche();

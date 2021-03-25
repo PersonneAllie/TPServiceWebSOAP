@@ -15,8 +15,9 @@ namespace LogiqueMetierHotel
         public int nbPersonne;
         public int numChambre;
         public int dureeSejour;
+        public int prixTotal;
 
-        public Reservation(String newNomClient, String newPrenomClient, int newNumCarteBancaire, int newNumChambre, DateTime newDateArrivée, DateTime newDateDepart, int newNbPersonne)
+        public Reservation(String newNomClient, String newPrenomClient, int newNumCarteBancaire, int newNumChambre, DateTime newDateArrivée, DateTime newDateDepart, int newNbPersonne, int PrixTotal)
         {
             idReservation += 1;
             this.nomClient = newNomClient;
@@ -27,6 +28,7 @@ namespace LogiqueMetierHotel
             this.numCarteBancaire = newNumCarteBancaire;
             this.nbPersonne = newNbPersonne;
             this.dureeSejour = (dateDepart - dateArrivée).Days;
+            this.prixTotal = prixTotal;
         }
 
         public Reservation()
@@ -36,7 +38,7 @@ namespace LogiqueMetierHotel
 
         public override string ToString()
         {
-            return base.ToString() + "\n - " + this.nomClient + "\n - " + this.prenomClient + "\n - " + this.dateArrivée + "\n - " + this.dateDepart + "\n - " + this.numChambre;
+            return base.ToString() + "\n - " + this.nomClient + "\n - " + this.prenomClient + "\n - " + this.dateArrivée + "\n - " + this.dateDepart + "\n - " + this.numChambre + "\n -" + this.prixTotal;
         }
 
         public void reservationHotel(List<Hotel> resList,List<Hotel> baseList)
@@ -59,26 +61,31 @@ namespace LogiqueMetierHotel
             dateArrivee = Convert.ToDateTime(Console.ReadLine());
             dateDepart = Convert.ToDateTime(Console.ReadLine());
             int num = 100;
+            int prixTotal = 0;
             Hotel resHotel = new Hotel();
             foreach (Hotel x in baseList)
             {
                 if(x.nomHotel.Equals(nom))
                 {
+                    Console.WriteLine("if 1");
                     resHotel = x;
                     num = x.chambreDisponible(dateArrivee, dateDepart, nbPersonne).numChambre;
                     Console.WriteLine(num);
+                    prixTotal = (int)(x.prixNuit * nbPersonne);
                 }
             }
 
             if (num != 100)
             {
-                Reservation res = new Reservation(nomPersonne, prenom, numeroCarte, num, dateArrivee, dateDepart, nbPersonne);
+                Console.WriteLine("if 2");
+                Reservation res = new Reservation(nomPersonne, prenom, numeroCarte, num, dateArrivee, dateDepart, nbPersonne,prixTotal);
                 foreach (Hotel x in baseList)
                 {
                     if (x.nomHotel.Equals(nom))
                     {
                         x.ListReservations.Add(res);
                         x.ToStringListReservation();
+                        
                     }
                 }
                 Console.WriteLine("Votre réservation a été effectué, à plus sous l'abri_bus");
