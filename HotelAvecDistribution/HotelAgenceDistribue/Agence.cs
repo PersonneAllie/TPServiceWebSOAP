@@ -8,9 +8,9 @@ namespace HotelAgenceDistribue
     public class Agence
     {
         public int idAgence;
-        public string nonAgence;
+        public string nomAgence;
         public string adresse;
-        public int commissionAgence;
+        public float commissionAgence;
 
         private string login;
         private string password;
@@ -19,10 +19,21 @@ namespace HotelAgenceDistribue
         private List<Client> clientAgence;
 
 
-        public Agence()
+        public Agence(int id, string nom, string adresse, float com,string login, string password)
         {
             this.hotelPartenaire = new List<Hotel>();
             this.clientAgence = new List<Client>();
+            this.idAgence = id;
+            this.nomAgence = nom;
+            this.adresse = adresse;
+            this.commissionAgence = com;
+            this.login = login;
+            this.password = password;
+        }
+
+        public Agence()
+        {
+
         }
 
 

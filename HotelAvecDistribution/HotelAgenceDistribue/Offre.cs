@@ -9,7 +9,8 @@ namespace HotelAgenceDistribue
     {
         public int idOffre;
         public Chambre offreChambre;
-        public string dateOffre;
+        public DateTime deb;
+        public DateTime fin;
         public int prixTotalOffre;
 
 
@@ -18,18 +19,19 @@ namespace HotelAgenceDistribue
 
         }
 
-        public Offre(int id, Chambre chambre, string date, int prix)
+        public Offre(int id, Chambre chambre,DateTime deb, DateTime fin, int prix)
         {
             this.idOffre = id;
             this.offreChambre = chambre;
-            this.dateOffre = date;
+            this.deb = deb;
+            this.fin = fin;
             this.prixTotalOffre = prix;
 
         }
 
         public override string ToString()
         {
-            return base.ToString() + "\n -" + this.idOffre + "\n -" + this.offreChambre + "\n -" + this.dateOffre + "\n -" + this.prixTotalOffre;
+            return base.ToString() + "\n -" + this.idOffre + "\n -" + this.offreChambre + "\n -" + this.deb + "\n -" + this.fin + "\n -" + this.prixTotalOffre;
         }
     }
 }

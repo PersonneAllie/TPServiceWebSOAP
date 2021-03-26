@@ -93,6 +93,7 @@
       <DependentUpon>ReservationHotel.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TypeChambre.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

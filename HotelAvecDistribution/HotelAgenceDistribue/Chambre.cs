@@ -8,6 +8,8 @@ namespace HotelAgenceDistribue
     {
         public int numChambre;
         public int nbLits;
+        public bool estDispo;
+        public TypeChambre type;
 
 
         public Chambre()
@@ -19,6 +21,7 @@ namespace HotelAgenceDistribue
         {
             this.numChambre = num;
             this.nbLits = lits;
+            this.estDispo = true;
         }
 
 

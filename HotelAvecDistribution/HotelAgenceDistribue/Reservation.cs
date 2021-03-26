@@ -69,17 +69,16 @@ namespace HotelAgenceDistribue
             {
                 if(x.nomHotel.Equals(nom))
                 {
-                    Console.WriteLine("if 1");
+                    
                     resHotel = x;
                     num = x.chambreDisponible(dateArrivee, dateDepart, nbPersonne).numChambre;
-                    Console.WriteLine(num);
                     prixTotal = (int)(x.prixNuit * nbPersonne) * dureeSejour;
                 }
             }
 
             if (num != 100)
             {
-                Console.WriteLine("if 2");
+              
                
                 foreach (Hotel x in baseList)
                 {
