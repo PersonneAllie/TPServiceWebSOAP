@@ -1,0 +1,7 @@
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelServicesConsommer\HotelWebService\obj\Debug\HotelWebService.csprojAssemblyReference.cache
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelServicesConsommer\HotelWebService\obj\Debug\HotelWebService.csproj.CoreCompileInputs.cache
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelServicesConsommer\HotelWebService\bin\Debug\HotelWebService.exe.config
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelServicesConsommer\HotelWebService\bin\Debug\HotelWebService.exe
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelServicesConsommer\HotelWebService\bin\Debug\HotelWebService.pdb
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelServicesConsommer\HotelWebService\obj\Debug\HotelWebService.exe
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelServicesConsommer\HotelWebService\obj\Debug\HotelWebService.pdb

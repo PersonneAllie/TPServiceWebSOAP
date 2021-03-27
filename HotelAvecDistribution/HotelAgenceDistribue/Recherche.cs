@@ -104,7 +104,7 @@ namespace HotelAgenceDistribue
             //Gestion date
             foreach (Hotel x in res.ToList())
             {
-                Chambre z = null;
+                TypeChambre z = null;
                 if(x.chambreDisponible(dateArrivee,dateDepart,nbPersonnes).Equals(z)) {
                     research.Remove(x);
                 }

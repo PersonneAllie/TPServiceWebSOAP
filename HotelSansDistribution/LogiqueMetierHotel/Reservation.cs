@@ -6,29 +6,27 @@ namespace LogiqueMetierHotel
 {
     public class Reservation
     {
-        public  static int idReservation = 0;
+        public static int idReservation = 0;
         public String nomClient;
         public String prenomClient;
-        public DateTime dateArrivée;
+        public DateTime dateArrivee;
         public DateTime dateDepart;
         public int numCarteBancaire;
         public int nbPersonne;
-        public int numChambre;
         public int dureeSejour;
-        public int prixTotal;
+        public double prixTotal;
 
-        public Reservation(String newNomClient, String newPrenomClient, int newNumCarteBancaire, int newNumChambre, DateTime newDateArrivée, DateTime newDateDepart, int newNbPersonne, int PrixTotal)
+        public Reservation(String newNomClient, String newPrenomClient, int newNumCarteBancaire, DateTime newDateArrivee, DateTime newDateDepart, int newNbPersonne, double PrixTotal)
         {
             idReservation += 1;
             this.nomClient = newNomClient;
             this.prenomClient = newPrenomClient;
-            this.dateArrivée = newDateArrivée;
-            this.numChambre = newNumChambre;
+            this.dateArrivee = newDateArrivee;
             this.dateDepart = newDateDepart;
             this.numCarteBancaire = newNumCarteBancaire;
             this.nbPersonne = newNbPersonne;
-            this.dureeSejour = (dateDepart - dateArrivée).Days;
-            this.prixTotal = prixTotal;
+            this.dureeSejour = (dateDepart - dateArrivee).Days;
+            this.prixTotal = PrixTotal;
         }
 
         public Reservation()
@@ -38,10 +36,10 @@ namespace LogiqueMetierHotel
 
         public override string ToString()
         {
-            return base.ToString() + "\n - " + this.nomClient + "\n - " + this.prenomClient + "\n - " + this.dateArrivée + "\n - " + this.dateDepart + "\n - " + this.numChambre + "\n -" + this.prixTotal;
+            return  this.nomClient + "\n - " + this.prenomClient + "\n - " + this.dateArrivee + "\n - " + this.dateDepart + "\n - " + "Prix total de votre réservation : " + this.prixTotal;
         }
 
-        public void reservationHotel(List<Hotel> resList,List<Hotel> baseList)
+        public void reservationHotel(List<Hotel> resList, List<Hotel> baseList)
         {
             String nom;
             String nomPersonne;
@@ -60,39 +58,39 @@ namespace LogiqueMetierHotel
             nbPersonne = Convert.ToInt32(Console.ReadLine());
             dateArrivee = Convert.ToDateTime(Console.ReadLine());
             dateDepart = Convert.ToDateTime(Console.ReadLine());
-            int num = 100;
-            int prixTotal = 0;
-            Hotel resHotel = new Hotel();
+
+            Chambre z = null;
+
             foreach (Hotel x in baseList)
             {
-                if(x.nomHotel.Equals(nom))
+                if (x.nomHotel.Equals(nom))
                 {
-                    Console.WriteLine("if 1");
-                    resHotel = x;
-                    num = x.chambreDisponible(dateArrivee, dateDepart, nbPersonne).numChambre;
-                    Console.WriteLine(num);
-                    prixTotal = (int)(x.prixNuit * nbPersonne);
-                }
-            }
+                    TimeSpan total = (dateDepart - dateArrivee);
+                    double temp = total.TotalDays;
+                    Console.WriteLine(temp);
+                    double prixTotal = (int)(x.prixNuit * nbPersonne) * temp;
+                    Reservation res = new Reservation(nomPersonne, prenom, numeroCarte, dateArrivee, dateDepart, nbPersonne, prixTotal);
+                    //recherche la premiere chambre libre et fais la reservation 
+                    //si elle n'existe pas/la reservation n'a pas pu etre effectuer renvoie null
+                    Chambre chambre = x.Reserver(res);
 
-            if (num != 100)
-            {
-                Console.WriteLine("if 2");
-                Reservation res = new Reservation(nomPersonne, prenom, numeroCarte, num, dateArrivee, dateDepart, nbPersonne,prixTotal);
-                foreach (Hotel x in baseList)
-                {
-                    if (x.nomHotel.Equals(nom))
+                    if (chambre.Equals(z)==false)
                     {
-                        x.ListReservations.Add(res);
-                        x.ToStringListReservation();
-                        
+                        //info hotel
+                        Console.WriteLine(x.ToString());
+                        //info chambre
+                        Console.WriteLine(chambre.ToString());
+                        //info reservation
+                        chambre.ToStringListReservation();
+                        Console.WriteLine("Votre réservation a été effectué, à plus sous l'abri_bus");
                     }
+                    else
+                    {
+                        Console.WriteLine("Désoler il n'y a pas de chambre disponible dans cet hotel pour vous, victime");
+                    }
+
+
                 }
-                Console.WriteLine("Votre réservation a été effectué, à plus sous l'abri_bus");
-            }
-            else
-            {
-                Console.WriteLine("Désoler il n'y a pas de chambre disponible dans cet hotel pour vous, victime");
             }
         }
 

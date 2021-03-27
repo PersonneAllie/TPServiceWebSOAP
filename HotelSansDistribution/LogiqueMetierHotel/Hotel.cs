@@ -7,7 +7,6 @@ namespace LogiqueMetierHotel
     public class Hotel
     {
         public static int idHotel = 0;
-        public List<Reservation> ListReservations;
         public List<Chambre> ListChambres;
         public String nomHotel;
         public String adresseHotel;
@@ -19,7 +18,6 @@ namespace LogiqueMetierHotel
         public Hotel(String newNomHotel, String newAdresse, String newVille, String newPays, int nbEtoiles, float prix)
         {
             idHotel += 1;
-            this.ListReservations = new List<Reservation>();
             this.ListChambres = new List<Chambre>();
             this.nomHotel = newNomHotel;
             this.adresseHotel = newAdresse;
@@ -34,18 +32,6 @@ namespace LogiqueMetierHotel
 
         }
 
-
-        public void ajoutReservation(Reservation r)
-        {
-            this.ListReservations.Add(r);
-        }
-
-        public void retraitReservation(Reservation r)
-        {
-            if(DateTime.Now > r.dateDepart) { 
-            this.ListReservations.Remove(r);
-                }
-        }
 
         public void InitChambre()
         {
@@ -85,40 +71,34 @@ namespace LogiqueMetierHotel
 
         public Chambre chambreDisponible(DateTime debut, DateTime fin, int nbLits)
         {
-            foreach (Chambre x in this.ListChambres)
-            {
-                if (x.nbLits >= nbLits) //On trouve une chambre au nombre de lits convenable
+            Chambre z = null;
+                foreach (Chambre x in this.ListChambres)
+            {   
+                //vérifie si la chambre est disponible
+                if (x.estDisponible(debut, fin, nbLits))
                 {
-                    bool alwaysAvailable = true;
-                    bool usedInTheTimeFrame = false;
-                    foreach (Reservation y in this.ListReservations)
-                    {
-                        if (y.numChambre == x.numChambre)
-                        {
-                            alwaysAvailable = false; //la chambre est utilisé au moins une fois car elle est dans la liste
-                            if ((y.dateArrivée >= debut & y.dateDepart <= fin)//cas 1 de reservation dans la période 
-                                   | (y.dateArrivée < debut & y.dateDepart > fin)//cas 2 de reservation avant et et après la période 
-                                   | (y.dateArrivée < debut & y.dateDepart <= fin)//cas 3 de reservation avant la période et qui se termine pendant
-                                   | (y.dateArrivée >= debut & y.dateDepart < fin)//cas 4 de reservation pendant la période mais que se termine avant
-                            )
-                            {
-                                usedInTheTimeFrame = true;
-                            }
-                        }
-                    }
-                    if (alwaysAvailable == true)//la chambre n'est jamais utilisé 
-                    {
-                        return x;
-                    }
-
-                    if (alwaysAvailable == false & usedInTheTimeFrame == false)//la chambre n'est jamais utilisé dans la période
-                    {
-                        return x;
-                    }
-                    //ici le cas echec donc on continue a parcourir la liste ce chambres de l'hotel
+                    return x;
                 }
+
             }
-            return null; //l'hotel n'as pas de chambre ou on n'a rien trouvé
+            //l'hotel n'as pas de chambre (vide) ou elles sont toute occupé pendant la période
+            return z; 
+        }
+
+        public Chambre Reserver(Reservation r)
+        {
+            Chambre chambre = this.chambreDisponible(r.dateArrivee, r.dateDepart, r.nbPersonne);
+            Chambre z = null;
+            if (chambre.Equals(z))
+            {   //pas de chambre disponible
+                return z;
+            }
+            else
+            {
+                chambre.ajoutReservation(r);
+            }
+            return chambre;
+
         }
 
         public override string ToString()
@@ -126,13 +106,6 @@ namespace LogiqueMetierHotel
             return base.ToString() + "\n - " + this.nomHotel + "\n - " + this.adresseHotel + "\n - " + this.ville + "\n - " + this.paysHotel + "\n - " + this.nbEtoiles + "\n - " + this.prixNuit;
         }
 
-        public void ToStringListReservation()
-        {
-                foreach (Reservation z in this.ListReservations)
-                {
-                    Console.WriteLine(z.ToString());
-                }
-        }
 
       
     }

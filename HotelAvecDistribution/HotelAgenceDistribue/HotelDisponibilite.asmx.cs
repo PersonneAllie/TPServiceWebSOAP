@@ -22,23 +22,111 @@ namespace HotelAgenceDistribue
         public Hotel hotelPasCher = new Hotel("IbisBudget","230 Avenue des roses","Montpellier","France",2,35);
 
         public Agence agenceChoisis = new Agence();
-        public Agence agencePartenaire1 = new Agence(1, "Agence des Oliviers", "87 Route des eaux, Montpellier", (float)0.2, "loginAgence1", "admin");
-        public Agence agencePartenaire2 = new Agence(2, "Agence des Roses", "187 Avenue des eaux, Anger", (float)0.1, "loginAgence2", "admin");
+        public Agence agencePartenaire1 = new Agence(1, "Agence des Oliviers", "87 Route des eaux, Montpellier", (float)0.2, "loginAgence1", "admin1");
+        public Agence agencePartenaire2 = new Agence(2, "Agence des Roses", "187 Avenue des eaux, Anger", (float)0.1, "loginAgence2", "admin2");
+
+        public TypeChambre chambre1 = new TypeChambre(0, 2);
+        public TypeChambre chambre2 = new TypeChambre(1, 1);
+        public TypeChambre chambre3 = new TypeChambre(2, 3);
+        public TypeChambre chambre4 = new TypeChambre(3, 4);
+        public TypeChambre chambre5 = new TypeChambre(4, 2);
+
+        public List<Offre> listTemp = new List<Offre>();
 
         public HotelDisponibilite()
         {
             agencePartenaire1.HotelPartenaire.Add(hotelPasCher);
             agencePartenaire2.HotelPartenaire.Add(hotelPasCher);
+            hotelPasCher.ListChambres.Add(chambre1);
+            hotelPasCher.ListChambres.Add(chambre2);
+            hotelPasCher.ListChambres.Add(chambre3);
+            hotelPasCher.ListChambres.Add(chambre4);
+            hotelPasCher.ListChambres.Add(chambre5);
         }
 
         //Afficher les offres disponible
         [WebMethod]
-        public List<Offre> AfficherOffreDisponible(int id, string login, string password,string dateArrive, string dateDepart,int nbPersonne)
+        public List<Offre> AfficherOffreDisponible(string login, string password,string dateArrive, string dateDepart,int nbPersonne)
+        {
+
+            DateTime dt1 = DateTime.ParseExact(dateArrive, "dd/MM/yyyy", culture);
+            DateTime dt2 = DateTime.ParseExact(dateDepart, "dd/MM/yyyy", culture);
+            this.agenceChoisis =  checkConnexion(login, password);
+            List<Offre> Listres = new List<Offre>();
+            if (this.agenceChoisis != null)
+            {
+                Listres = createOffre();
+                listTemp = Listres;
+                afficherOffre(Listres);
+                
+            }
+            else
+            {
+                Console.WriteLine("Désoler votre identification a échoué ! ");
+            }
+
+            return Listres;
+        }
+
+       
+        [WebMethod]
+
+        public Agence checkConnexion(string log, string mdp)
+        {
+            if(log.Equals("loginAgence1") && mdp.Equals("admin1"))
+            {
+                Console.WriteLine("Agence 1 bien connecté ! ");
+                this.agenceChoisis = this.agencePartenaire1;
+                return agenceChoisis;
+            }
+            else if(log.Equals("loginAgence2") && mdp.Equals("admin2"))
+            {
+                Console.WriteLine("Agence 2 bien connecté ! ");
+                this.agenceChoisis = this.agencePartenaire2;
+                return agenceChoisis;
+            }
+            else
+            {
+                Console.WriteLine("Echec connexion ! ");
+                this.agenceChoisis = null;
+                return null;
+            }
+        }
+
+
+
+        [WebMethod]
+
+        public void afficherOffre(List<Offre> list)
+        {
+            foreach(Offre x in list)
+            {
+                Console.WriteLine("- Id Offre : " + x.idOffre + "\n -" + " Chambre :" + x.numChambre + "\n -" + "Prix Total : " + x.prixTotalOffre + "(Prix base =" + hotelPasCher.prixNuit + " + commision Agence = " + agenceChoisis.commissionAgence + ")");
+            }
+        }
+
+        [WebMethod]
+
+        public List<Offre> createOffre()
         {
             List<Offre> testList = new List<Offre>();
-           Offre testOffre = new Offre(1, new Chambre(0,3), "25/03/2021 to 27/03/2021", 230);
-           testList.Add(testOffre);
-           return testList;
+            Offre offreTemp = new Offre();
+            float prix;
+            Random r = new Random();
+            DateTime deb = DateTime.ParseExact("27/03/2021", "dd/MM/yyyy", culture);
+            DateTime fin = DateTime.ParseExact("30/03/2021", "dd/MM/yyyy", culture);
+
+
+            foreach (TypeChambre i in hotelPasCher.ListChambres)
+            {
+                prix = hotelPasCher.prixNuit +  (hotelPasCher.prixNuit * agenceChoisis.commissionAgence);
+                offreTemp = new Offre(hotelPasCher.nomHotel + r.Next(40), i.numChambre,deb,fin, prix);
+                testList.Add(offreTemp);
+            }
+
+            return testList;
+
+
         }
     }
 }

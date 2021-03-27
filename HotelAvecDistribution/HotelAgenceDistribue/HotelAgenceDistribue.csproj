@@ -72,11 +72,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chambre.cs" />
     <Compile Include="Agence.cs" />
+    <Compile Include="TypeChambre.cs" />
+    <Compile Include="Hotel.cs" />
     <Compile Include="Offre.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="Hotel.cs" />
     <Compile Include="HotelDisponibilite.asmx.cs">
       <DependentUpon>HotelDisponibilite.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -93,7 +93,6 @@
       <DependentUpon>ReservationHotel.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TypeChambre.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
