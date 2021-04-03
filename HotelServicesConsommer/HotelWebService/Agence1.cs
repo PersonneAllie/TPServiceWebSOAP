@@ -51,7 +51,7 @@ namespace HotelWebService
                         listOffres = new List<ServiceDisponibilite.Offre>(tabOffres);
                         foreach (ServiceDisponibilite.Offre x in listOffres)
                         {
-                            Console.WriteLine("- Id Offre : " + x.idOffre + "\n -" + " Numéro Chambre :" + x.numChambre + "\n -" + "Prix Total : " + x.prixTotalOffre + "\n");
+                            Console.WriteLine("- Id Offre (pour votre réservation) : " + x.idOffre + "\n -" + " Numéro Chambre et nombre de lits :" + x.numChambre.numChambre + x.numChambre.nbLits + "\n -" + "Prix Total : " + x.prixTotalOffre + "\n");
                         }
                         break;
                     case "2":
@@ -63,7 +63,7 @@ namespace HotelWebService
                         numeroCarte = Convert.ToInt32(Console.ReadLine());
                         ServiceReservation.Reservation test = new ServiceReservation.Reservation();
                         test = reservation.faireReservation(login, mdp, idOffre, nom, prenom, numeroCarte, nbPersonnes);
-                        Console.WriteLine(test.nomClient + "\n - " + test.prenomClient + "\n - " + test.dateArrivee + "\n - " + test.dateDepart + "\n - " + "Prix total de votre réservation : " + test.prixTotal);
+                        Console.WriteLine("Nom de réservation : " + test.nomClient + "\n - " + test.prenomClient + "\n - " + "Date d'arrivée : " + test.dateArrivee + "\n - " + "Date de départ : " + test.dateDepart + "\n - " + "Prix total de votre réservation : " + test.prixTotal);
                         break;
                 }
             }

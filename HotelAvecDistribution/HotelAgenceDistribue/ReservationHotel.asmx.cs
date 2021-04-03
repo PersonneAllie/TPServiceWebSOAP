@@ -61,11 +61,6 @@ namespace HotelAgenceDistribue
                         TypeChambre chambre = hotel.hotelPasCher.Reserver(res);
                         return resFinal;
                     }
-                    else
-                    {
-                        Console.WriteLine("Aucune offre correspond à cet id");
-                        return resFinal;
-                    }
                 }
             return resFinal;
             }

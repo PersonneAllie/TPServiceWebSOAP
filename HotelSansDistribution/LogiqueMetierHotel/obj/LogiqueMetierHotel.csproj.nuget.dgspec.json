@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\beaug\\Desktop\\M1S2\\ArchiDistrib\\LogiqueMetierHotel\\LogiqueMetierHotel.csproj": {}
+    "C:\\Users\\beaug\\Desktop\\M1S2\\ArchiDistrib\\HotelSansDistribution\\LogiqueMetierHotel\\LogiqueMetierHotel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\beaug\\Desktop\\M1S2\\ArchiDistrib\\LogiqueMetierHotel\\LogiqueMetierHotel.csproj": {
+    "C:\\Users\\beaug\\Desktop\\M1S2\\ArchiDistrib\\HotelSansDistribution\\LogiqueMetierHotel\\LogiqueMetierHotel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\beaug\\Desktop\\M1S2\\ArchiDistrib\\LogiqueMetierHotel\\LogiqueMetierHotel.csproj",
+        "projectUniqueName": "C:\\Users\\beaug\\Desktop\\M1S2\\ArchiDistrib\\HotelSansDistribution\\LogiqueMetierHotel\\LogiqueMetierHotel.csproj",
         "projectName": "LogiqueMetierHotel",
-        "projectPath": "C:\\Users\\beaug\\Desktop\\M1S2\\ArchiDistrib\\LogiqueMetierHotel\\LogiqueMetierHotel.csproj",
+        "projectPath": "C:\\Users\\beaug\\Desktop\\M1S2\\ArchiDistrib\\HotelSansDistribution\\LogiqueMetierHotel\\LogiqueMetierHotel.csproj",
         "packagesPath": "C:\\Users\\beaug\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\beaug\\Desktop\\M1S2\\ArchiDistrib\\LogiqueMetierHotel\\obj\\",
+        "outputPath": "C:\\Users\\beaug\\Desktop\\M1S2\\ArchiDistrib\\HotelSansDistribution\\LogiqueMetierHotel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
