@@ -31,6 +31,17 @@ namespace HotelAgenceDistribue
         public TypeChambre chambre4 = new TypeChambre(3, 4);
         public TypeChambre chambre5 = new TypeChambre(4, 2);
 
+        public DateTime deb1 =  DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false));
+        public DateTime fin1 = DateTime.ParseExact("10/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false));
+
+        public DateTime deb2 = DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false));
+        public DateTime fin2 = DateTime.ParseExact("13/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false));
+
+        public Offre offreTest1 = new Offre("IbisBudget-1", new TypeChambre(0, 2), DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("10/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 40);
+        public Offre offreTest2 = new Offre("IbisBudget-2", new TypeChambre(1, 1), DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("10/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 40);
+        public Offre offreTest3 = new Offre("IbisBudget-3",new TypeChambre(2, 3), DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 90);
+        public Offre offreTest4 = new Offre("IbisBudget-4", new TypeChambre(3, 4), DateTime.ParseExact("09/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("13/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 200);
+
         public List<Offre> listTemp = new List<Offre>();
 
         public HotelDisponibilite()
@@ -42,10 +53,15 @@ namespace HotelAgenceDistribue
             hotelPasCher.ListChambres.Add(chambre3);
             hotelPasCher.ListChambres.Add(chambre4);
             hotelPasCher.ListChambres.Add(chambre5);
+
+            listTemp.Add(offreTest1);
+            listTemp.Add(offreTest2);
+            listTemp.Add(offreTest3);
+            listTemp.Add(offreTest4);
         }
 
         //Afficher les offres disponible
-        [WebMethod]
+        [WebMethod (EnableSession =true)]
         public List<Offre> AfficherOffreDisponible(string login, string password,string dateArrive, string dateDepart,int nbPersonne)
         {
 
@@ -55,9 +71,7 @@ namespace HotelAgenceDistribue
             List<Offre> Listres = new List<Offre>();
             if (this.agenceChoisis != null)
             {
-                Listres = createOffre();
-                listTemp = Listres;
-                afficherOffre(Listres);
+                Listres = listTemp;
                 
             }
             else
@@ -69,7 +83,6 @@ namespace HotelAgenceDistribue
         }
 
        
-        [WebMethod]
 
         public Agence checkConnexion(string log, string mdp)
         {
@@ -94,9 +107,6 @@ namespace HotelAgenceDistribue
         }
 
 
-
-        [WebMethod]
-
         public void afficherOffre(List<Offre> list)
         {
             foreach(Offre x in list)
@@ -105,7 +115,6 @@ namespace HotelAgenceDistribue
             }
         }
 
-        [WebMethod]
 
         public List<Offre> createOffre()
         {
@@ -113,14 +122,14 @@ namespace HotelAgenceDistribue
             Offre offreTemp = new Offre();
             float prix;
             Random r = new Random();
-            DateTime deb = DateTime.ParseExact("27/03/2021", "dd/MM/yyyy", culture);
-            DateTime fin = DateTime.ParseExact("30/03/2021", "dd/MM/yyyy", culture);
+            DateTime deb = DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", culture);
+            DateTime fin = DateTime.ParseExact("10/04/2021", "dd/MM/yyyy", culture);
 
 
             foreach (TypeChambre i in hotelPasCher.ListChambres)
             {
                 prix = hotelPasCher.prixNuit +  (hotelPasCher.prixNuit * agenceChoisis.commissionAgence);
-                offreTemp = new Offre(hotelPasCher.nomHotel + r.Next(40), i.numChambre,deb,fin, prix);
+                offreTemp = new Offre(hotelPasCher.nomHotel + r.Next(40), i,deb,fin, prix);
                 testList.Add(offreTemp);
             }
 
@@ -128,5 +137,8 @@ namespace HotelAgenceDistribue
 
 
         }
+
+
+        
     }
 }

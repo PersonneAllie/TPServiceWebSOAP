@@ -64,19 +64,13 @@
     <None Include="Connected Services\ServiceDisponibilite\HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceDisponibilite\HotelWebService.ServiceDisponibilite.afficherOffreResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDisponibilite\HotelWebService.ServiceDisponibilite.Agence.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDisponibilite\HotelWebService.ServiceDisponibilite.checkConnexionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceDisponibilite\HotelWebService.ServiceDisponibilite.createOffreResponse.datasource">
+    <None Include="Connected Services\ServiceDisponibilite\HotelWebService.ServiceDisponibilite.faireReservationResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceDisponibilite\HotelWebService.ServiceDisponibilite.Offre.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceDisponibilite\HotelWebService.ServiceDisponibilite.Reservation.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReservation\HotelWebService.ServiceReservation.faireReservationResponse.datasource">

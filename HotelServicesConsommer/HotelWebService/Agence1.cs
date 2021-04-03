@@ -16,8 +16,8 @@ namespace HotelWebService
         static void Main(string[] args)
 
         {
-            string date1 = "27/03/2021";
-            string date2 = "30/03/2021";
+            string date1 = "06/04/2021";
+            string date2 = "10/04/2021";
             int nbPersonnes;
 
             string nom;
@@ -47,6 +47,7 @@ namespace HotelWebService
                         Console.WriteLine("Entrez le nombre de personnes : ");
                         nbPersonnes = Convert.ToInt32(Console.ReadLine());
                         tabOffres = hotel.AfficherOffreDisponible(login, mdp, date1, date2, nbPersonnes);
+
                         listOffres = new List<ServiceDisponibilite.Offre>(tabOffres);
                         foreach (ServiceDisponibilite.Offre x in listOffres)
                         {

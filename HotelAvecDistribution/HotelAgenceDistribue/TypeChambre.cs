@@ -42,7 +42,7 @@ namespace HotelAgenceDistribue
         public bool estDisponible(DateTime debut, DateTime fin, int nbLits)
         {
             //ne rentre pas dans le critère
-            if (this.nbLits < nbLits)
+            if (this.nbLits <= nbLits)
             {
                 return false;
             }

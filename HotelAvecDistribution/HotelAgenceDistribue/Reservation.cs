@@ -36,7 +36,7 @@ namespace HotelAgenceDistribue
 
         public override string ToString()
         {
-            return  this.nomClient + "\n - " + this.prenomClient + "\n - " + this.dateArrivee + "\n - " + this.dateDepart + "\n - " + "Prix total de votre réservation : " + this.prixTotal;
+            return  "Nom : " + this.nomClient + "\n - " + "Prénom : " + this.prenomClient + "\n - " + this.dateArrivee + "\n - " + this.dateDepart + "\n - " + "Prix total de votre réservation : " + this.prixTotal;
         }
 
         public void reservationHotel(List<Hotel> resList, List<Hotel> baseList)
@@ -82,11 +82,11 @@ namespace HotelAgenceDistribue
                         Console.WriteLine(chambre.ToString());
                         //info reservation
                         chambre.ToStringListReservation();
-                        Console.WriteLine("Votre réservation a été effectué, à plus sous l'abri_bus");
+                        Console.WriteLine("Votre réservation a été effectué");
                     }
                     else
                     {
-                        Console.WriteLine("Désoler il n'y a pas de chambre disponible dans cet hotel pour vous, victime");
+                        Console.WriteLine("Désoler il n'y a pas de chambre disponible dans cet hotel pour vous");
                     }
 
 

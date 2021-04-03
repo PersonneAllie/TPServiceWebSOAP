@@ -25,7 +25,8 @@ namespace HotelWebService.ServiceDisponibilite {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string idOffreField;
         
-        private int numChambreField;
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HotelWebService.ServiceDisponibilite.TypeChambre numChambreField;
         
         private System.DateTime debField;
         
@@ -56,13 +57,13 @@ namespace HotelWebService.ServiceDisponibilite {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int numChambre {
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public HotelWebService.ServiceDisponibilite.TypeChambre numChambre {
             get {
                 return this.numChambreField;
             }
             set {
-                if ((this.numChambreField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.numChambreField, value) != true)) {
                     this.numChambreField = value;
                     this.RaisePropertyChanged("numChambre");
                 }
@@ -104,392 +105,6 @@ namespace HotelWebService.ServiceDisponibilite {
                 if ((this.prixTotalOffreField.Equals(value) != true)) {
                     this.prixTotalOffreField = value;
                     this.RaisePropertyChanged("prixTotalOffre");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Agence", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class Agence : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int idAgenceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nomAgenceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string adresseField;
-        
-        private float commissionAgenceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HotelWebService.ServiceDisponibilite.Hotel[] HotelPartenaireField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HotelWebService.ServiceDisponibilite.Client[] ClientAgneceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LoginField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PasswordField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int idAgence {
-            get {
-                return this.idAgenceField;
-            }
-            set {
-                if ((this.idAgenceField.Equals(value) != true)) {
-                    this.idAgenceField = value;
-                    this.RaisePropertyChanged("idAgence");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string nomAgence {
-            get {
-                return this.nomAgenceField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.nomAgenceField, value) != true)) {
-                    this.nomAgenceField = value;
-                    this.RaisePropertyChanged("nomAgence");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string adresse {
-            get {
-                return this.adresseField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.adresseField, value) != true)) {
-                    this.adresseField = value;
-                    this.RaisePropertyChanged("adresse");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public float commissionAgence {
-            get {
-                return this.commissionAgenceField;
-            }
-            set {
-                if ((this.commissionAgenceField.Equals(value) != true)) {
-                    this.commissionAgenceField = value;
-                    this.RaisePropertyChanged("commissionAgence");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public HotelWebService.ServiceDisponibilite.Hotel[] HotelPartenaire {
-            get {
-                return this.HotelPartenaireField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.HotelPartenaireField, value) != true)) {
-                    this.HotelPartenaireField = value;
-                    this.RaisePropertyChanged("HotelPartenaire");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
-        public HotelWebService.ServiceDisponibilite.Client[] ClientAgnece {
-            get {
-                return this.ClientAgneceField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ClientAgneceField, value) != true)) {
-                    this.ClientAgneceField = value;
-                    this.RaisePropertyChanged("ClientAgnece");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
-        public string Login {
-            get {
-                return this.LoginField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LoginField, value) != true)) {
-                    this.LoginField = value;
-                    this.RaisePropertyChanged("Login");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
-        public string Password {
-            get {
-                return this.PasswordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
-                    this.PasswordField = value;
-                    this.RaisePropertyChanged("Password");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Hotel", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class Hotel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HotelWebService.ServiceDisponibilite.TypeChambre[] ListChambresField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nomHotelField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string adresseHotelField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string villeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string paysHotelField;
-        
-        private int nbEtoilesField;
-        
-        private float prixNuitField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public HotelWebService.ServiceDisponibilite.TypeChambre[] ListChambres {
-            get {
-                return this.ListChambresField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ListChambresField, value) != true)) {
-                    this.ListChambresField = value;
-                    this.RaisePropertyChanged("ListChambres");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string nomHotel {
-            get {
-                return this.nomHotelField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.nomHotelField, value) != true)) {
-                    this.nomHotelField = value;
-                    this.RaisePropertyChanged("nomHotel");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string adresseHotel {
-            get {
-                return this.adresseHotelField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.adresseHotelField, value) != true)) {
-                    this.adresseHotelField = value;
-                    this.RaisePropertyChanged("adresseHotel");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string ville {
-            get {
-                return this.villeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.villeField, value) != true)) {
-                    this.villeField = value;
-                    this.RaisePropertyChanged("ville");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string paysHotel {
-            get {
-                return this.paysHotelField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.paysHotelField, value) != true)) {
-                    this.paysHotelField = value;
-                    this.RaisePropertyChanged("paysHotel");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
-        public int nbEtoiles {
-            get {
-                return this.nbEtoilesField;
-            }
-            set {
-                if ((this.nbEtoilesField.Equals(value) != true)) {
-                    this.nbEtoilesField = value;
-                    this.RaisePropertyChanged("nbEtoiles");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
-        public float prixNuit {
-            get {
-                return this.prixNuitField;
-            }
-            set {
-                if ((this.prixNuitField.Equals(value) != true)) {
-                    this.prixNuitField = value;
-                    this.RaisePropertyChanged("prixNuit");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Client", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class Client : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nomClientField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string prenomClientField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string emailClientField;
-        
-        private int numeroCarteBancaireField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string nomClient {
-            get {
-                return this.nomClientField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.nomClientField, value) != true)) {
-                    this.nomClientField = value;
-                    this.RaisePropertyChanged("nomClient");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string prenomClient {
-            get {
-                return this.prenomClientField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.prenomClientField, value) != true)) {
-                    this.prenomClientField = value;
-                    this.RaisePropertyChanged("prenomClient");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string emailClient {
-            get {
-                return this.emailClientField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.emailClientField, value) != true)) {
-                    this.emailClientField = value;
-                    this.RaisePropertyChanged("emailClient");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public int numeroCarteBancaire {
-            get {
-                return this.numeroCarteBancaireField;
-            }
-            set {
-                if ((this.numeroCarteBancaireField.Equals(value) != true)) {
-                    this.numeroCarteBancaireField = value;
-                    this.RaisePropertyChanged("numeroCarteBancaire");
                 }
             }
         }
@@ -741,26 +356,12 @@ namespace HotelWebService.ServiceDisponibilite {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AfficherOffreDisponible", ReplyAction="*")]
         System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleResponse> AfficherOffreDisponibleAsync(HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleRequest request);
         
-        // CODEGEN : La génération du contrat de message depuis le nom d'élément log de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/checkConnexion", ReplyAction="*")]
-        HotelWebService.ServiceDisponibilite.checkConnexionResponse checkConnexion(HotelWebService.ServiceDisponibilite.checkConnexionRequest request);
+        // CODEGEN : La génération du contrat de message depuis le nom d'élément login de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/faireReservation", ReplyAction="*")]
+        HotelWebService.ServiceDisponibilite.faireReservationResponse faireReservation(HotelWebService.ServiceDisponibilite.faireReservationRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/checkConnexion", ReplyAction="*")]
-        System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.checkConnexionResponse> checkConnexionAsync(HotelWebService.ServiceDisponibilite.checkConnexionRequest request);
-        
-        // CODEGEN : La génération du contrat de message depuis le nom d'élément list de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/afficherOffre", ReplyAction="*")]
-        HotelWebService.ServiceDisponibilite.afficherOffreResponse afficherOffre(HotelWebService.ServiceDisponibilite.afficherOffreRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/afficherOffre", ReplyAction="*")]
-        System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.afficherOffreResponse> afficherOffreAsync(HotelWebService.ServiceDisponibilite.afficherOffreRequest request);
-        
-        // CODEGEN : La génération du contrat de message depuis le nom d'élément createOffreResult de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/createOffre", ReplyAction="*")]
-        HotelWebService.ServiceDisponibilite.createOffreResponse createOffre(HotelWebService.ServiceDisponibilite.createOffreRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/createOffre", ReplyAction="*")]
-        System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.createOffreResponse> createOffreAsync(HotelWebService.ServiceDisponibilite.createOffreRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/faireReservation", ReplyAction="*")]
+        System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.faireReservationResponse> faireReservationAsync(HotelWebService.ServiceDisponibilite.faireReservationRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -851,15 +452,15 @@ namespace HotelWebService.ServiceDisponibilite {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class checkConnexionRequest {
+    public partial class faireReservationRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="checkConnexion", Namespace="http://tempuri.org/", Order=0)]
-        public HotelWebService.ServiceDisponibilite.checkConnexionRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="faireReservation", Namespace="http://tempuri.org/", Order=0)]
+        public HotelWebService.ServiceDisponibilite.faireReservationRequestBody Body;
         
-        public checkConnexionRequest() {
+        public faireReservationRequest() {
         }
         
-        public checkConnexionRequest(HotelWebService.ServiceDisponibilite.checkConnexionRequestBody Body) {
+        public faireReservationRequest(HotelWebService.ServiceDisponibilite.faireReservationRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -868,20 +469,40 @@ namespace HotelWebService.ServiceDisponibilite {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class checkConnexionRequestBody {
+    public partial class faireReservationRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string log;
+        public string login;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string mdp;
+        public string password;
         
-        public checkConnexionRequestBody() {
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string idOffre;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string nomPersonne;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string prenom;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+        public int numeroCB;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+        public int nbPersonne;
+        
+        public faireReservationRequestBody() {
         }
         
-        public checkConnexionRequestBody(string log, string mdp) {
-            this.log = log;
-            this.mdp = mdp;
+        public faireReservationRequestBody(string login, string password, string idOffre, string nomPersonne, string prenom, int numeroCB, int nbPersonne) {
+            this.login = login;
+            this.password = password;
+            this.idOffre = idOffre;
+            this.nomPersonne = nomPersonne;
+            this.prenom = prenom;
+            this.numeroCB = numeroCB;
+            this.nbPersonne = nbPersonne;
         }
     }
     
@@ -889,15 +510,15 @@ namespace HotelWebService.ServiceDisponibilite {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class checkConnexionResponse {
+    public partial class faireReservationResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="checkConnexionResponse", Namespace="http://tempuri.org/", Order=0)]
-        public HotelWebService.ServiceDisponibilite.checkConnexionResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="faireReservationResponse", Namespace="http://tempuri.org/", Order=0)]
+        public HotelWebService.ServiceDisponibilite.faireReservationResponseBody Body;
         
-        public checkConnexionResponse() {
+        public faireReservationResponse() {
         }
         
-        public checkConnexionResponse(HotelWebService.ServiceDisponibilite.checkConnexionResponseBody Body) {
+        public faireReservationResponse(HotelWebService.ServiceDisponibilite.faireReservationResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -906,138 +527,16 @@ namespace HotelWebService.ServiceDisponibilite {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class checkConnexionResponseBody {
+    public partial class faireReservationResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public HotelWebService.ServiceDisponibilite.Agence checkConnexionResult;
+        public HotelWebService.ServiceDisponibilite.Reservation faireReservationResult;
         
-        public checkConnexionResponseBody() {
+        public faireReservationResponseBody() {
         }
         
-        public checkConnexionResponseBody(HotelWebService.ServiceDisponibilite.Agence checkConnexionResult) {
-            this.checkConnexionResult = checkConnexionResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class afficherOffreRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="afficherOffre", Namespace="http://tempuri.org/", Order=0)]
-        public HotelWebService.ServiceDisponibilite.afficherOffreRequestBody Body;
-        
-        public afficherOffreRequest() {
-        }
-        
-        public afficherOffreRequest(HotelWebService.ServiceDisponibilite.afficherOffreRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class afficherOffreRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public HotelWebService.ServiceDisponibilite.Offre[] list;
-        
-        public afficherOffreRequestBody() {
-        }
-        
-        public afficherOffreRequestBody(HotelWebService.ServiceDisponibilite.Offre[] list) {
-            this.list = list;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class afficherOffreResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="afficherOffreResponse", Namespace="http://tempuri.org/", Order=0)]
-        public HotelWebService.ServiceDisponibilite.afficherOffreResponseBody Body;
-        
-        public afficherOffreResponse() {
-        }
-        
-        public afficherOffreResponse(HotelWebService.ServiceDisponibilite.afficherOffreResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class afficherOffreResponseBody {
-        
-        public afficherOffreResponseBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class createOffreRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="createOffre", Namespace="http://tempuri.org/", Order=0)]
-        public HotelWebService.ServiceDisponibilite.createOffreRequestBody Body;
-        
-        public createOffreRequest() {
-        }
-        
-        public createOffreRequest(HotelWebService.ServiceDisponibilite.createOffreRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class createOffreRequestBody {
-        
-        public createOffreRequestBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class createOffreResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="createOffreResponse", Namespace="http://tempuri.org/", Order=0)]
-        public HotelWebService.ServiceDisponibilite.createOffreResponseBody Body;
-        
-        public createOffreResponse() {
-        }
-        
-        public createOffreResponse(HotelWebService.ServiceDisponibilite.createOffreResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class createOffreResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public HotelWebService.ServiceDisponibilite.Offre[] createOffreResult;
-        
-        public createOffreResponseBody() {
-        }
-        
-        public createOffreResponseBody(HotelWebService.ServiceDisponibilite.Offre[] createOffreResult) {
-            this.createOffreResult = createOffreResult;
+        public faireReservationResponseBody(HotelWebService.ServiceDisponibilite.Reservation faireReservationResult) {
+            this.faireReservationResult = faireReservationResult;
         }
     }
     
@@ -1102,77 +601,40 @@ namespace HotelWebService.ServiceDisponibilite {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        HotelWebService.ServiceDisponibilite.checkConnexionResponse HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap.checkConnexion(HotelWebService.ServiceDisponibilite.checkConnexionRequest request) {
-            return base.Channel.checkConnexion(request);
+        HotelWebService.ServiceDisponibilite.faireReservationResponse HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap.faireReservation(HotelWebService.ServiceDisponibilite.faireReservationRequest request) {
+            return base.Channel.faireReservation(request);
         }
         
-        public HotelWebService.ServiceDisponibilite.Agence checkConnexion(string log, string mdp) {
-            HotelWebService.ServiceDisponibilite.checkConnexionRequest inValue = new HotelWebService.ServiceDisponibilite.checkConnexionRequest();
-            inValue.Body = new HotelWebService.ServiceDisponibilite.checkConnexionRequestBody();
-            inValue.Body.log = log;
-            inValue.Body.mdp = mdp;
-            HotelWebService.ServiceDisponibilite.checkConnexionResponse retVal = ((HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap)(this)).checkConnexion(inValue);
-            return retVal.Body.checkConnexionResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.checkConnexionResponse> HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap.checkConnexionAsync(HotelWebService.ServiceDisponibilite.checkConnexionRequest request) {
-            return base.Channel.checkConnexionAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.checkConnexionResponse> checkConnexionAsync(string log, string mdp) {
-            HotelWebService.ServiceDisponibilite.checkConnexionRequest inValue = new HotelWebService.ServiceDisponibilite.checkConnexionRequest();
-            inValue.Body = new HotelWebService.ServiceDisponibilite.checkConnexionRequestBody();
-            inValue.Body.log = log;
-            inValue.Body.mdp = mdp;
-            return ((HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap)(this)).checkConnexionAsync(inValue);
+        public HotelWebService.ServiceDisponibilite.Reservation faireReservation(string login, string password, string idOffre, string nomPersonne, string prenom, int numeroCB, int nbPersonne) {
+            HotelWebService.ServiceDisponibilite.faireReservationRequest inValue = new HotelWebService.ServiceDisponibilite.faireReservationRequest();
+            inValue.Body = new HotelWebService.ServiceDisponibilite.faireReservationRequestBody();
+            inValue.Body.login = login;
+            inValue.Body.password = password;
+            inValue.Body.idOffre = idOffre;
+            inValue.Body.nomPersonne = nomPersonne;
+            inValue.Body.prenom = prenom;
+            inValue.Body.numeroCB = numeroCB;
+            inValue.Body.nbPersonne = nbPersonne;
+            HotelWebService.ServiceDisponibilite.faireReservationResponse retVal = ((HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap)(this)).faireReservation(inValue);
+            return retVal.Body.faireReservationResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        HotelWebService.ServiceDisponibilite.afficherOffreResponse HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap.afficherOffre(HotelWebService.ServiceDisponibilite.afficherOffreRequest request) {
-            return base.Channel.afficherOffre(request);
+        System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.faireReservationResponse> HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap.faireReservationAsync(HotelWebService.ServiceDisponibilite.faireReservationRequest request) {
+            return base.Channel.faireReservationAsync(request);
         }
         
-        public void afficherOffre(HotelWebService.ServiceDisponibilite.Offre[] list) {
-            HotelWebService.ServiceDisponibilite.afficherOffreRequest inValue = new HotelWebService.ServiceDisponibilite.afficherOffreRequest();
-            inValue.Body = new HotelWebService.ServiceDisponibilite.afficherOffreRequestBody();
-            inValue.Body.list = list;
-            HotelWebService.ServiceDisponibilite.afficherOffreResponse retVal = ((HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap)(this)).afficherOffre(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.afficherOffreResponse> HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap.afficherOffreAsync(HotelWebService.ServiceDisponibilite.afficherOffreRequest request) {
-            return base.Channel.afficherOffreAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.afficherOffreResponse> afficherOffreAsync(HotelWebService.ServiceDisponibilite.Offre[] list) {
-            HotelWebService.ServiceDisponibilite.afficherOffreRequest inValue = new HotelWebService.ServiceDisponibilite.afficherOffreRequest();
-            inValue.Body = new HotelWebService.ServiceDisponibilite.afficherOffreRequestBody();
-            inValue.Body.list = list;
-            return ((HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap)(this)).afficherOffreAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        HotelWebService.ServiceDisponibilite.createOffreResponse HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap.createOffre(HotelWebService.ServiceDisponibilite.createOffreRequest request) {
-            return base.Channel.createOffre(request);
-        }
-        
-        public HotelWebService.ServiceDisponibilite.Offre[] createOffre() {
-            HotelWebService.ServiceDisponibilite.createOffreRequest inValue = new HotelWebService.ServiceDisponibilite.createOffreRequest();
-            inValue.Body = new HotelWebService.ServiceDisponibilite.createOffreRequestBody();
-            HotelWebService.ServiceDisponibilite.createOffreResponse retVal = ((HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap)(this)).createOffre(inValue);
-            return retVal.Body.createOffreResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.createOffreResponse> HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap.createOffreAsync(HotelWebService.ServiceDisponibilite.createOffreRequest request) {
-            return base.Channel.createOffreAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.createOffreResponse> createOffreAsync() {
-            HotelWebService.ServiceDisponibilite.createOffreRequest inValue = new HotelWebService.ServiceDisponibilite.createOffreRequest();
-            inValue.Body = new HotelWebService.ServiceDisponibilite.createOffreRequestBody();
-            return ((HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap)(this)).createOffreAsync(inValue);
+        public System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.faireReservationResponse> faireReservationAsync(string login, string password, string idOffre, string nomPersonne, string prenom, int numeroCB, int nbPersonne) {
+            HotelWebService.ServiceDisponibilite.faireReservationRequest inValue = new HotelWebService.ServiceDisponibilite.faireReservationRequest();
+            inValue.Body = new HotelWebService.ServiceDisponibilite.faireReservationRequestBody();
+            inValue.Body.login = login;
+            inValue.Body.password = password;
+            inValue.Body.idOffre = idOffre;
+            inValue.Body.nomPersonne = nomPersonne;
+            inValue.Body.prenom = prenom;
+            inValue.Body.numeroCB = numeroCB;
+            inValue.Body.nbPersonne = nbPersonne;
+            return ((HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap)(this)).faireReservationAsync(inValue);
         }
     }
 }
