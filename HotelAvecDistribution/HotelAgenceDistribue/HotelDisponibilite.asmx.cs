@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -18,6 +19,8 @@ namespace HotelAgenceDistribue
      public class HotelDisponibilite : System.Web.Services.WebService
     {
         private IFormatProvider culture = new CultureInfo("en-US", false);
+
+        public static string path = "C:\\Users\\beaug\\Desktop\\M1S2\\ArchiDistrib\\assets\\";
 
         public Hotel hotelPasCher = new Hotel("IbisBudget","230 Avenue des roses","Montpellier","France",2,35);
 
@@ -37,12 +40,18 @@ namespace HotelAgenceDistribue
         public DateTime deb2 = DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false));
         public DateTime fin2 = DateTime.ParseExact("13/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false));
 
-        public Offre offreTest1 = new Offre("IbisBudget-1", new TypeChambre(0, 2), DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("10/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 40);
-        public Offre offreTest2 = new Offre("IbisBudget-2", new TypeChambre(1, 1), DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("10/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 40);
-        public Offre offreTest3 = new Offre("IbisBudget-3",new TypeChambre(2, 3), DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 90);
-        public Offre offreTest4 = new Offre("IbisBudget-4", new TypeChambre(3, 4), DateTime.ParseExact("09/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("13/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 200);
+        public Offre offreTest1 = new Offre("IbisBudget-1", new TypeChambre(0, 2, path + "chambre1.png"), DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("10/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 40);
+        public Offre offreTest2 = new Offre("IbisBudget-2", new TypeChambre(1, 1, path + "chambre2.png"), DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("10/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 40);
+        public Offre offreTest3 = new Offre("IbisBudget-3",new TypeChambre(2, 3, path + "chambre2.png"), DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 90);
+        public Offre offreTest4 = new Offre("IbisBudget-4", new TypeChambre(3, 4, path + "chambre1.png"), DateTime.ParseExact("09/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("13/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 200);
+        
+        public Offre offreGUI1 = new Offre("IbisBudget-1", new TypeChambre(0, 2, "https://lemistral.eu/wp-content/uploads/quintuple/chambre-quintuple-chambre-3-lits-768x432.jpg", ""), DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("10/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 40);
+        public Offre offreGUI2 = new Offre("IbisBudget-2", new TypeChambre(1, 1, "https://www.usine-digitale.fr/mediatheque/3/9/8/000493893_homePageUne/hotel-c-o-q-paris.jpg", ""), DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("10/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 40);
+        public Offre offreGUI3 = new Offre("IbisBudget-3", new TypeChambre(2, 3, "https://media-cdn.tripadvisor.com/media/photo-s/09/75/9f/d5/mariafe-inn.jpg",""), DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 90);
+        public Offre offreGUI4 = new Offre("IbisBudget-4", new TypeChambre(3, 4, "https://www.vendee-hotel-restaurant.com/wp-content/uploads/2014/10/IMG_9063-700x467.jpg",""), DateTime.ParseExact("09/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("13/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 200);
 
         public List<Offre> listTemp = new List<Offre>();
+        public List<Offre> listTempGUI = new List<Offre>();
 
         public HotelDisponibilite()
         {
@@ -58,6 +67,12 @@ namespace HotelAgenceDistribue
             listTemp.Add(offreTest2);
             listTemp.Add(offreTest3);
             listTemp.Add(offreTest4);
+
+            listTempGUI.Add(offreGUI1);
+            listTempGUI.Add(offreGUI2);
+            listTempGUI.Add(offreGUI3);
+            listTempGUI.Add(offreGUI4);
+
         }
 
         //Afficher les offres disponible
@@ -71,6 +86,7 @@ namespace HotelAgenceDistribue
             List<Offre> Listres = new List<Offre>();
             if (this.agenceChoisis != null)
             {
+                
                 Listres = listTemp;
                 
             }
@@ -82,7 +98,52 @@ namespace HotelAgenceDistribue
             return Listres;
         }
 
-       
+        //Afficher les offres disponible
+        [WebMethod(EnableSession = true)]
+        public List<Offre> AfficherOffreDisponibleAvecImage(string login, string password, string dateArrive, string dateDepart, int nbPersonne)
+        {
+
+            DateTime dt1 = DateTime.ParseExact(dateArrive, "dd/MM/yyyy", culture);
+            DateTime dt2 = DateTime.ParseExact(dateDepart, "dd/MM/yyyy", culture);
+            this.agenceChoisis = checkConnexion(login, password);
+            List<Offre> Listres = new List<Offre>();
+            if (this.agenceChoisis != null)
+            {
+                Listres = listTemp;
+
+            }
+            else
+            {
+                Console.WriteLine("Désoler votre identification a échoué ! ");
+            }
+
+            return Listres;
+        }
+
+
+        //Afficher les offres disponible
+        [WebMethod(EnableSession = true)]
+        public List<Offre> AfficherOffreDisponibleGUI(string login, string password, string dateArrive, string dateDepart, int nbPersonne)
+        {
+
+            DateTime dt1 = DateTime.ParseExact(dateArrive, "dd/MM/yyyy", culture);
+            DateTime dt2 = DateTime.ParseExact(dateDepart, "dd/MM/yyyy", culture);
+            this.agenceChoisis = checkConnexion(login, password);
+            List<Offre> Listres = new List<Offre>();
+            if (this.agenceChoisis != null)
+            {
+
+                Listres = listTempGUI;
+
+            }
+            else
+            {
+                Console.WriteLine("Désoler votre identification a échoué ! ");
+            }
+
+            return Listres;
+        }
+
 
         public Agence checkConnexion(string log, string mdp)
         {
@@ -138,7 +199,36 @@ namespace HotelAgenceDistribue
 
         }
 
+        [WebMethod(EnableSession = true)]
+        public Reservation faireReservation(string login, string password, string idOffre, string nomPersonne, string prenom, int numeroCB, int nbPersonne)
+        {
 
-        
+
+            checkConnexion(login, password);
+            Reservation resFinal = new Reservation();
+
+            foreach (Offre x in listTemp)
+            {
+
+                if (x.idOffre == idOffre)
+                {
+
+                    Reservation res = new Reservation(nomPersonne, prenom, numeroCB, x.deb, x.fin, nbPersonne, x.prixTotalOffre);
+                    resFinal = res;
+                    Client temp = new Client(nomPersonne, prenom, numeroCB);
+                    agenceChoisis.ClientAgence.Add(temp);
+                    //recherche la premiere chambre libre et fais la reservation 
+                    //si elle n'existe pas/la reservation n'a pas pu etre effectuer renvoie null
+                    TypeChambre chambre = hotelPasCher.Reserver(res);
+                    return resFinal;
+                }
+            }
+            return resFinal;
+        }
+
+      
+
+
+
     }
 }

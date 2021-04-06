@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace HotelAgenceDistribue
@@ -8,6 +9,8 @@ namespace HotelAgenceDistribue
     {
         public int numChambre;
         public int nbLits;
+        public string imageURL;
+        public byte[] image;
         public List<Reservation> ListReservations = new List<Reservation>();
 
         public TypeChambre() { }
@@ -15,6 +18,23 @@ namespace HotelAgenceDistribue
         {
             this.numChambre = num;
             this.nbLits = nbLits;
+            this.ListReservations = new List<Reservation>();
+        }
+
+        public TypeChambre(int num, int nbLits,string imageUrl)
+        {
+            this.numChambre = num;
+            this.nbLits = nbLits;
+            this.imageURL = imageUrl;
+            image = StreamToByteArray(imageURL);
+            this.ListReservations = new List<Reservation>();
+        }
+
+        public TypeChambre(int num, int nbLits,string imageUrl,string gui)
+        {
+            this.numChambre = num;
+            this.nbLits = nbLits;
+            this.imageURL = imageUrl;
             this.ListReservations = new List<Reservation>();
         }
 
@@ -75,6 +95,27 @@ namespace HotelAgenceDistribue
 
             //le foreach n'a jamais trouvé de reservation qui gene;
             return true;
+        }
+
+        public byte[] StreamToByteArray(string fileName)
+        {
+            //File.SetAttributes(fileName, FileAttributes.Normal);
+            byte[] totalStream = new byte[0];
+            using (Stream input = File.Open(fileName, FileMode.Open, FileAccess.Read))
+            {
+                byte[] streamArray = new byte[0];
+                byte[] buffer = new byte[32]; //*1024
+                int read = 0;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    streamArray = new byte[totalStream.Length + read];
+                    totalStream.CopyTo(streamArray, 0);
+                    Array.Copy(buffer, 0, streamArray, totalStream.Length, read);
+                    totalStream = streamArray;
+
+                }
+            }
+            return totalStream;
         }
 
 

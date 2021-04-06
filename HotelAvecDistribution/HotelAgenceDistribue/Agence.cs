@@ -38,7 +38,7 @@ namespace HotelAgenceDistribue
 
 
         public List<Hotel> HotelPartenaire { get => hotelPartenaire; set => hotelPartenaire = value; }
-        public List<Client> ClientAgnece { get => clientAgence; set => clientAgence = value; }
+        public List<Client> ClientAgence { get => clientAgence; set => clientAgence = value; }
         public string Login { get => login; set => login = value; }
         public string Password { get => password; set => password = value; }
     }

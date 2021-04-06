@@ -133,6 +133,12 @@ namespace HotelWebService.ServiceDisponibilite {
         private int nbLitsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string imageURLField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] imageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private HotelWebService.ServiceDisponibilite.Reservation[] ListReservationsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -172,6 +178,32 @@ namespace HotelWebService.ServiceDisponibilite {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string imageURL {
+            get {
+                return this.imageURLField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.imageURLField, value) != true)) {
+                    this.imageURLField = value;
+                    this.RaisePropertyChanged("imageURL");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public byte[] image {
+            get {
+                return this.imageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.imageField, value) != true)) {
+                    this.imageField = value;
+                    this.RaisePropertyChanged("image");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
         public HotelWebService.ServiceDisponibilite.Reservation[] ListReservations {
             get {
                 return this.ListReservationsField;
@@ -357,6 +389,20 @@ namespace HotelWebService.ServiceDisponibilite {
         System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleResponse> AfficherOffreDisponibleAsync(HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleRequest request);
         
         // CODEGEN : La génération du contrat de message depuis le nom d'élément login de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AfficherOffreDisponibleAvecImage", ReplyAction="*")]
+        HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageResponse AfficherOffreDisponibleAvecImage(HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AfficherOffreDisponibleAvecImage", ReplyAction="*")]
+        System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageResponse> AfficherOffreDisponibleAvecImageAsync(HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageRequest request);
+        
+        // CODEGEN : La génération du contrat de message depuis le nom d'élément login de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AfficherOffreDisponibleGUI", ReplyAction="*")]
+        HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIResponse AfficherOffreDisponibleGUI(HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AfficherOffreDisponibleGUI", ReplyAction="*")]
+        System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIResponse> AfficherOffreDisponibleGUIAsync(HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIRequest request);
+        
+        // CODEGEN : La génération du contrat de message depuis le nom d'élément login de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/faireReservation", ReplyAction="*")]
         HotelWebService.ServiceDisponibilite.faireReservationResponse faireReservation(HotelWebService.ServiceDisponibilite.faireReservationRequest request);
         
@@ -445,6 +491,174 @@ namespace HotelWebService.ServiceDisponibilite {
         
         public AfficherOffreDisponibleResponseBody(HotelWebService.ServiceDisponibilite.Offre[] AfficherOffreDisponibleResult) {
             this.AfficherOffreDisponibleResult = AfficherOffreDisponibleResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AfficherOffreDisponibleAvecImageRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AfficherOffreDisponibleAvecImage", Namespace="http://tempuri.org/", Order=0)]
+        public HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageRequestBody Body;
+        
+        public AfficherOffreDisponibleAvecImageRequest() {
+        }
+        
+        public AfficherOffreDisponibleAvecImageRequest(HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AfficherOffreDisponibleAvecImageRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string login;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string dateArrive;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string dateDepart;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public int nbPersonne;
+        
+        public AfficherOffreDisponibleAvecImageRequestBody() {
+        }
+        
+        public AfficherOffreDisponibleAvecImageRequestBody(string login, string password, string dateArrive, string dateDepart, int nbPersonne) {
+            this.login = login;
+            this.password = password;
+            this.dateArrive = dateArrive;
+            this.dateDepart = dateDepart;
+            this.nbPersonne = nbPersonne;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AfficherOffreDisponibleAvecImageResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AfficherOffreDisponibleAvecImageResponse", Namespace="http://tempuri.org/", Order=0)]
+        public HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageResponseBody Body;
+        
+        public AfficherOffreDisponibleAvecImageResponse() {
+        }
+        
+        public AfficherOffreDisponibleAvecImageResponse(HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AfficherOffreDisponibleAvecImageResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public HotelWebService.ServiceDisponibilite.Offre[] AfficherOffreDisponibleAvecImageResult;
+        
+        public AfficherOffreDisponibleAvecImageResponseBody() {
+        }
+        
+        public AfficherOffreDisponibleAvecImageResponseBody(HotelWebService.ServiceDisponibilite.Offre[] AfficherOffreDisponibleAvecImageResult) {
+            this.AfficherOffreDisponibleAvecImageResult = AfficherOffreDisponibleAvecImageResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AfficherOffreDisponibleGUIRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AfficherOffreDisponibleGUI", Namespace="http://tempuri.org/", Order=0)]
+        public HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIRequestBody Body;
+        
+        public AfficherOffreDisponibleGUIRequest() {
+        }
+        
+        public AfficherOffreDisponibleGUIRequest(HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AfficherOffreDisponibleGUIRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string login;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string dateArrive;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string dateDepart;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public int nbPersonne;
+        
+        public AfficherOffreDisponibleGUIRequestBody() {
+        }
+        
+        public AfficherOffreDisponibleGUIRequestBody(string login, string password, string dateArrive, string dateDepart, int nbPersonne) {
+            this.login = login;
+            this.password = password;
+            this.dateArrive = dateArrive;
+            this.dateDepart = dateDepart;
+            this.nbPersonne = nbPersonne;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AfficherOffreDisponibleGUIResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AfficherOffreDisponibleGUIResponse", Namespace="http://tempuri.org/", Order=0)]
+        public HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIResponseBody Body;
+        
+        public AfficherOffreDisponibleGUIResponse() {
+        }
+        
+        public AfficherOffreDisponibleGUIResponse(HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AfficherOffreDisponibleGUIResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public HotelWebService.ServiceDisponibilite.Offre[] AfficherOffreDisponibleGUIResult;
+        
+        public AfficherOffreDisponibleGUIResponseBody() {
+        }
+        
+        public AfficherOffreDisponibleGUIResponseBody(HotelWebService.ServiceDisponibilite.Offre[] AfficherOffreDisponibleGUIResult) {
+            this.AfficherOffreDisponibleGUIResult = AfficherOffreDisponibleGUIResult;
         }
     }
     
@@ -598,6 +812,72 @@ namespace HotelWebService.ServiceDisponibilite {
             inValue.Body.dateDepart = dateDepart;
             inValue.Body.nbPersonne = nbPersonne;
             return ((HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap)(this)).AfficherOffreDisponibleAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageResponse HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap.AfficherOffreDisponibleAvecImage(HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageRequest request) {
+            return base.Channel.AfficherOffreDisponibleAvecImage(request);
+        }
+        
+        public HotelWebService.ServiceDisponibilite.Offre[] AfficherOffreDisponibleAvecImage(string login, string password, string dateArrive, string dateDepart, int nbPersonne) {
+            HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageRequest inValue = new HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageRequest();
+            inValue.Body = new HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageRequestBody();
+            inValue.Body.login = login;
+            inValue.Body.password = password;
+            inValue.Body.dateArrive = dateArrive;
+            inValue.Body.dateDepart = dateDepart;
+            inValue.Body.nbPersonne = nbPersonne;
+            HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageResponse retVal = ((HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap)(this)).AfficherOffreDisponibleAvecImage(inValue);
+            return retVal.Body.AfficherOffreDisponibleAvecImageResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageResponse> HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap.AfficherOffreDisponibleAvecImageAsync(HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageRequest request) {
+            return base.Channel.AfficherOffreDisponibleAvecImageAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageResponse> AfficherOffreDisponibleAvecImageAsync(string login, string password, string dateArrive, string dateDepart, int nbPersonne) {
+            HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageRequest inValue = new HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageRequest();
+            inValue.Body = new HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleAvecImageRequestBody();
+            inValue.Body.login = login;
+            inValue.Body.password = password;
+            inValue.Body.dateArrive = dateArrive;
+            inValue.Body.dateDepart = dateDepart;
+            inValue.Body.nbPersonne = nbPersonne;
+            return ((HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap)(this)).AfficherOffreDisponibleAvecImageAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIResponse HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap.AfficherOffreDisponibleGUI(HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIRequest request) {
+            return base.Channel.AfficherOffreDisponibleGUI(request);
+        }
+        
+        public HotelWebService.ServiceDisponibilite.Offre[] AfficherOffreDisponibleGUI(string login, string password, string dateArrive, string dateDepart, int nbPersonne) {
+            HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIRequest inValue = new HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIRequest();
+            inValue.Body = new HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIRequestBody();
+            inValue.Body.login = login;
+            inValue.Body.password = password;
+            inValue.Body.dateArrive = dateArrive;
+            inValue.Body.dateDepart = dateDepart;
+            inValue.Body.nbPersonne = nbPersonne;
+            HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIResponse retVal = ((HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap)(this)).AfficherOffreDisponibleGUI(inValue);
+            return retVal.Body.AfficherOffreDisponibleGUIResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIResponse> HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap.AfficherOffreDisponibleGUIAsync(HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIRequest request) {
+            return base.Channel.AfficherOffreDisponibleGUIAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIResponse> AfficherOffreDisponibleGUIAsync(string login, string password, string dateArrive, string dateDepart, int nbPersonne) {
+            HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIRequest inValue = new HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIRequest();
+            inValue.Body = new HotelWebService.ServiceDisponibilite.AfficherOffreDisponibleGUIRequestBody();
+            inValue.Body.login = login;
+            inValue.Body.password = password;
+            inValue.Body.dateArrive = dateArrive;
+            inValue.Body.dateDepart = dateDepart;
+            inValue.Body.nbPersonne = nbPersonne;
+            return ((HotelWebService.ServiceDisponibilite.HotelDisponibiliteSoap)(this)).AfficherOffreDisponibleGUIAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

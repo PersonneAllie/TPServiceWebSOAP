@@ -5,3 +5,7 @@ C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelServicesConsommer\HotelWebService\
 C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelServicesConsommer\HotelWebService\bin\Debug\HotelWebService.pdb
 C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelServicesConsommer\HotelWebService\obj\Debug\HotelWebService.exe
 C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelServicesConsommer\HotelWebService\obj\Debug\HotelWebService.pdb
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelServicesConsommer\HotelWebService\bin\Debug\System.Drawing.Common.dll
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelServicesConsommer\HotelWebService\obj\Debug\HotelWebService.csproj.CopyComplete
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelServicesConsommer\HotelWebService\obj\Debug\HotelWebService.Form1.resources
+C:\Users\beaug\Desktop\M1S2\ArchiDistrib\HotelServicesConsommer\HotelWebService\obj\Debug\HotelWebService.csproj.GenerateResource.cache

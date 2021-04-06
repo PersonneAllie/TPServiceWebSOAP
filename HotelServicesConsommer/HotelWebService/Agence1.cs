@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Windows.Forms;
 
 namespace HotelWebService
 {
@@ -11,7 +12,15 @@ namespace HotelWebService
         private readonly static string login = "loginAgence1";
         private readonly static string mdp = "admin1";
         public static ServiceDisponibilite.HotelDisponibiliteSoapClient hotel = new ServiceDisponibilite.HotelDisponibiliteSoapClient();
-        public static ServiceReservation.ReservationHotelSoapClient reservation = new ServiceReservation.ReservationHotelSoapClient();
+
+        public static Image byteArrayToImage(byte[] bytesArr)
+        {
+            using (MemoryStream memstr = new MemoryStream(bytesArr))
+            {
+                Image img = Image.FromStream(memstr);
+                return img;
+            }
+        }
 
         static void Main(string[] args)
 
@@ -36,7 +45,7 @@ namespace HotelWebService
             String cmd = "10";
             while (cmd != "0")
             {
-                Console.WriteLine("Saisir le chiffre correspondant à la fonctionnalité désiré : 0 : Quittez l'application | 1 : Afficher les offres disponibles de notre agence | 2 : Sélectionnez votre offre et passez réservation");
+                Console.WriteLine("Saisir le chiffre correspondant à la fonctionnalité désiré :" + "\n" +  "0 : Quittez l'application"  + "\n" + "1 : Afficher les offres disponibles de notre agence (sans image)" + "\n" + "2 : Afficher les offres disponible de notre agence (avec image)" + "\n" + "3 : Afficher les offres disponible de notre agence (avec GUI)" + "\n" + "4 : Sélectionnez votre offre et passez réservation");
                 cmd = Console.ReadLine();
                 switch (cmd)
                 {
@@ -51,22 +60,55 @@ namespace HotelWebService
                         listOffres = new List<ServiceDisponibilite.Offre>(tabOffres);
                         foreach (ServiceDisponibilite.Offre x in listOffres)
                         {
-                            Console.WriteLine("- Id Offre (pour votre réservation) : " + x.idOffre + "\n -" + " Numéro Chambre et nombre de lits :" + x.numChambre.numChambre + x.numChambre.nbLits + "\n -" + "Prix Total : " + x.prixTotalOffre + "\n");
+                            Console.WriteLine("- Id Offre (pour votre réservation) : " + x.idOffre + "\n -" + " Numéro Chambre et nombre de lits :" + x.numChambre.numChambre + " | " +  x.numChambre.nbLits+ " lits" + "\n -" +  "Image " + x.numChambre.imageURL + "Prix Total : " + x.prixTotalOffre + "\n");
                         }
                         break;
+
                     case "2":
+
+                        Console.WriteLine("Entrez le nombre de personnes : ");
+                        nbPersonnes = Convert.ToInt32(Console.ReadLine());
+                        tabOffres = hotel.AfficherOffreDisponibleAvecImage(login, mdp, date1, date2, nbPersonnes);
+                        listOffres = new List<ServiceDisponibilite.Offre>(tabOffres);
+                        foreach (ServiceDisponibilite.Offre x in listOffres)
+                        {
+                            
+                            Console.WriteLine("- Id Offre (pour votre réservation) : " + x.idOffre + "\n -" + " Numéro Chambre et nombre de lits : " + "Numéro : " + x.numChambre.numChambre + " | " + x.numChambre.nbLits + " lits" + "\n -"  + "Prix Total : " + x.prixTotalOffre + "\n");
+                            Image image = byteArrayToImage(x.numChambre.image);
+                            image.Save(x.idOffre + "_PhotoChambre.png", ImageFormat.Png);
+
+                        }
+                        break;
+                    case "3":
+                        Console.WriteLine("Entrez le nombre de personnes : ");
+                        nbPersonnes = Convert.ToInt32(Console.ReadLine());
+                        tabOffres = hotel.AfficherOffreDisponibleGUI(login, mdp, date1, date2, nbPersonnes);
+                        listOffres = new List<ServiceDisponibilite.Offre>(tabOffres);
+                        Console.WriteLine("Notre système de GUI va bientôt apparaitre, veuillez patientez");
+                        foreach (ServiceDisponibilite.Offre x in listOffres)
+                        {
+                            
+                            String info = "- Id Offre (pour votre réservation) : " + x.idOffre + "\n -" + " Numéro Chambre et nombre de lits : " + x.numChambre.numChambre + " | " + x.numChambre.nbLits + " lits";
+                            Form1 form = new Form1(x, x.numChambre.imageURL, info);
+                            form.ShowDialog();
+                            
+                        }
+                        break;
+                    case "4":
                         Console.WriteLine("Veuillez entrez l'ID de l'offre choisis, votre nom, votre prénom, le nombre de personne et votre numéro de carte bancaire pour la réservation");
                         idOffre = Console.ReadLine();
                         nom = Console.ReadLine();
                         prenom = Console.ReadLine();
                         nbPersonnes = Convert.ToInt32(Console.ReadLine());
                         numeroCarte = Convert.ToInt32(Console.ReadLine());
-                        ServiceReservation.Reservation test = new ServiceReservation.Reservation();
-                        test = reservation.faireReservation(login, mdp, idOffre, nom, prenom, numeroCarte, nbPersonnes);
-                        Console.WriteLine("Nom de réservation : " + test.nomClient + "\n - " + test.prenomClient + "\n - " + "Date d'arrivée : " + test.dateArrivee + "\n - " + "Date de départ : " + test.dateDepart + "\n - " + "Prix total de votre réservation : " + test.prixTotal);
+                        ServiceDisponibilite.Reservation test = new ServiceDisponibilite.Reservation();
+                        test = hotel.faireReservation(login, mdp, idOffre, nom, prenom, numeroCarte, nbPersonnes);
+                        Console.WriteLine("Nom de réservation : " + test.nomClient + " " + test.prenomClient + "\n - " + "Date d'arrivée : " + test.dateArrivee + "\n - " + "Date de départ : " + test.dateDepart + "\n - " + "Prix total de votre réservation : " + test.prixTotal);
                         break;
                 }
             }
+
+
 
             
         }
