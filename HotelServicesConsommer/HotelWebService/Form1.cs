@@ -19,8 +19,14 @@ namespace HotelWebService
 
             label1.Text = f.idOffre;
             label2.Text = info;
-            label3.Text = "OFFRE SUIVANTE";
             pictureBox1.Load(url);
+        }
+
+        public Form1()
+        {
+
+            InitializeComponent();
+
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -28,5 +34,10 @@ namespace HotelWebService
             this.Close();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form1 test = new Form1();
+            test.ShowDialog();
+        }
     }
 }

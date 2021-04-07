@@ -9,6 +9,7 @@ namespace LogiqueMetierHotel
         public static int idReservation = 0;
         public String nomClient;
         public String prenomClient;
+        public Client client;
         public DateTime dateArrivee;
         public DateTime dateDepart;
         public int numCarteBancaire;
@@ -27,6 +28,7 @@ namespace LogiqueMetierHotel
             this.nbPersonne = newNbPersonne;
             this.dureeSejour = (dateDepart - dateArrivee).Days;
             this.prixTotal = PrixTotal;
+            this.client = new Client(newNomClient, newPrenomClient, newNumCarteBancaire);
         }
 
         public Reservation()
@@ -82,7 +84,7 @@ namespace LogiqueMetierHotel
                         Console.WriteLine(chambre.ToString());
                         //info reservation
                         chambre.ToStringListReservation();
-                        Console.WriteLine("Votre réservation a été effectué, à plus sous l'abri_bus");
+                        Console.WriteLine("Votre réservation a été effectué, bonne journée et à bientôt");
                     }
                     else
                     {

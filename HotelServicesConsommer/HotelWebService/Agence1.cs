@@ -60,7 +60,7 @@ namespace HotelWebService
                         listOffres = new List<ServiceDisponibilite.Offre>(tabOffres);
                         foreach (ServiceDisponibilite.Offre x in listOffres)
                         {
-                            Console.WriteLine("- Id Offre (pour votre réservation) : " + x.idOffre + "\n -" + " Numéro Chambre et nombre de lits :" + x.numChambre.numChambre + " | " +  x.numChambre.nbLits+ " lits" + "\n -" +  "Image " + x.numChambre.imageURL + "Prix Total : " + x.prixTotalOffre + "\n");
+                            Console.WriteLine("- Id Offre (pour votre réservation) : " + x.idOffre + "\n -" + " Numéro Chambre et nombre de lits : " + x.numChambre.numChambre + " | " +  x.numChambre.nbLits+ " lits" + "\n -" +  "Prix Total : " + x.prixTotalOffre + "\n");
                         }
                         break;
 

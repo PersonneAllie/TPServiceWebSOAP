@@ -12,12 +12,11 @@ namespace LogiqueMetierHotel
         public String emailClient;
         public int numeroCarteBancaire;
 
-        public Client(String newNomClient, String newPrenomClient, String newEmailClient, int newNumeroCarteBancaire)
+        public Client(String newNomClient, String newPrenomClient, int newNumeroCarteBancaire)
         {
             idClient += 1;
             this.nomClient = newNomClient;
             this.prenomClient = newPrenomClient;
-            this.emailClient = newEmailClient;
             this.numeroCarteBancaire = newNumeroCarteBancaire;
         }
 

@@ -8,8 +8,7 @@ namespace LogiqueMetierHotel
 
         static void Main(string[] args)
         {
-            Client Denis = new Client("Beauget", "Denis", "denis.beauget@etu.umontpellier.fr", 123456789);
-            Client Hayaat = new Client("Hebiret", "Hayaat", "hayaat.hebiret@etu.umontpelier.fr", 123456789);
+
 
             Hotel ibis = new Hotel("Ibis", "2220 Avenue du pigeon", "Montpellier", "France", 2, 45);
             Hotel richou = new Hotel("ArgentPlus", "450 Route du Gange", "Paris", "France", 4, 130);
@@ -44,7 +43,7 @@ namespace LogiqueMetierHotel
             String cmd = "10";
             while (cmd != "0")
             {
-                Console.WriteLine("Saisir le chiffre correspondant à la fonctionnalité désiré : 0 : Quittez l'application | 1 : Faire une recherche | 3 : Sélectionnez votre Hotel et passez réservation");
+                Console.WriteLine("Saisir le chiffre correspondant à la fonctionnalité désiré :" + "\n" +  "0 : Quittez l'application" + "\n" + "1 : Faire une recherche " + "\n" + "2 : Sélectionnez votre Hotel et passez réservation");
                 cmd = Console.ReadLine();
                 switch (cmd)
                 {
