@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace HotelWebService
@@ -25,6 +26,7 @@ namespace HotelWebService
         static void Main(string[] args)
 
         {
+
             string date1 = "06/04/2021";
             string date2 = "10/04/2021";
             int nbPersonnes;
@@ -39,8 +41,11 @@ namespace HotelWebService
 
             Console.WriteLine("Bienvenue dans notre espace agence !");
 
-            
-
+            DateTime dt;
+            //DateTime dD;
+            //DateTime dF;
+            //String dateD;
+            //String dateF;
 
             String cmd = "10";
             while (cmd != "0")
@@ -55,11 +60,35 @@ namespace HotelWebService
                     case "1":
                         Console.WriteLine("Entrez le nombre de personnes : ");
                         nbPersonnes = Convert.ToInt32(Console.ReadLine());
-                        tabOffres = hotel.AfficherOffreDisponible(login, mdp, date1, date2, nbPersonnes);
+                        Console.WriteLine("Entrez la date de debut au format dd/mm/yyyy : ");
+                        String dateD = Convert.ToString(Console.ReadLine());
+                        while (!DateTime.TryParseExact(dateD, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dt))
+                        {
+                            Console.WriteLine("Réessayez");
+                            dateD = Convert.ToString(Console.ReadLine());
+                        }
+                        Console.WriteLine("Entrez la date de fin au format dd/mm/yyyy : ");
+                        String dateF = Convert.ToString(Console.ReadLine());
+                        while (!DateTime.TryParseExact(dateF, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dt))
+                        {
+                            Console.WriteLine("Réessayez");
+                            dateF = Convert.ToString(Console.ReadLine());
+                        }
+                        DateTime dD = DateTime.ParseExact(dateD, "dd/MM/yyyy", new CultureInfo("en-US", false));
+                        DateTime dF = DateTime.ParseExact(dateF, "dd/MM/yyyy", new CultureInfo("en-US", false));
+                        if (dD > dF)
+                        {
+                            Console.WriteLine("Inversion des dates");
+                            DateTime tmp = dD;
+                            dD = dF;
+                            dF = tmp;
+                        }
 
+                        tabOffres = hotel.AfficherOffreDisponible(login, mdp, date1, date2, nbPersonnes);
                         listOffres = new List<ServiceDisponibilite.Offre>(tabOffres);
                         foreach (ServiceDisponibilite.Offre x in listOffres)
                         {
+                            if (x.deb <= dD && x.fin >= dF && x.numChambre.nbLits>= nbPersonnes)
                             Console.WriteLine("- Id Offre (pour votre réservation) : " + x.idOffre + "\n -" + " Numéro Chambre et nombre de lits : " + x.numChambre.numChambre + " | " +  x.numChambre.nbLits+ " lits" + "\n -" +  "Prix Total : " + x.prixTotalOffre + "\n");
                         }
                         break;
@@ -72,25 +101,52 @@ namespace HotelWebService
                         listOffres = new List<ServiceDisponibilite.Offre>(tabOffres);
                         foreach (ServiceDisponibilite.Offre x in listOffres)
                         {
-                            
-                            Console.WriteLine("- Id Offre (pour votre réservation) : " + x.idOffre + "\n -" + " Numéro Chambre et nombre de lits : " + "Numéro : " + x.numChambre.numChambre + " | " + x.numChambre.nbLits + " lits" + "\n -"  + "Prix Total : " + x.prixTotalOffre + "\n");
-                            Image image = byteArrayToImage(x.numChambre.image);
-                            image.Save(x.idOffre + "_PhotoChambre.png", ImageFormat.Png);
-
+                            if (x.deb <= DateTime.ParseExact(date1, "dd/MM/yyyy", new CultureInfo("en-US", false)) && x.fin >= DateTime.ParseExact(date2, "dd/MM/yyyy", new CultureInfo("en-US", false)) && x.numChambre.nbLits >= nbPersonnes)
+                            {
+                                Console.WriteLine("- Id Offre (pour votre réservation) : " + x.idOffre + "\n -" + " Numéro Chambre et nombre de lits : " + "Numéro : " + x.numChambre.numChambre + " | " + x.numChambre.nbLits + " lits" + "\n -" + "Prix Total : " + x.prixTotalOffre + "\n");
+                                Image image = byteArrayToImage(x.numChambre.image);
+                                image.Save(x.idOffre + "_PhotoChambre.png", ImageFormat.Png);
+                            }
                         }
                         break;
                     case "3":
                         Console.WriteLine("Entrez le nombre de personnes : ");
                         nbPersonnes = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Entrez la date de debut au format dd/mm/yyyy : ");
+                        dateD = Convert.ToString(Console.ReadLine());
+                        while (!DateTime.TryParseExact(dateD, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dt))
+                        {
+                            Console.WriteLine("Réessayez");
+                            dateD = Convert.ToString(Console.ReadLine());
+                        }
+                        Console.WriteLine("Entrez la date de fin au format dd/mm/yyyy : ");
+                        dateF = Convert.ToString(Console.ReadLine());
+                        while (!DateTime.TryParseExact(dateF, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dt))
+                        {
+                            Console.WriteLine("Réessayez");
+                            dateF = Convert.ToString(Console.ReadLine());
+                        }
+                        dD = DateTime.ParseExact(dateD, "dd/MM/yyyy", new CultureInfo("en-US", false));
+                        dF = DateTime.ParseExact(dateF, "dd/MM/yyyy", new CultureInfo("en-US", false));
+                        if (dD > dF)
+                        {
+                            Console.WriteLine("Inversion des dates");
+                            DateTime tmp = dD;
+                            dD = dF;
+                            dF = tmp;
+                        }
+
                         tabOffres = hotel.AfficherOffreDisponibleGUI(login, mdp, date1, date2, nbPersonnes);
                         listOffres = new List<ServiceDisponibilite.Offre>(tabOffres);
                         Console.WriteLine("Notre système de GUI va bientôt apparaitre, veuillez patientez");
                         foreach (ServiceDisponibilite.Offre x in listOffres)
                         {
-                            
-                            String info = "- Id Offre (pour votre réservation) : " + x.idOffre + "\n -" + " Numéro Chambre et nombre de lits : " + x.numChambre.numChambre + " | " + x.numChambre.nbLits + " lits";
-                            Form1 form = new Form1(x, x.numChambre.imageURL, info);
-                            form.ShowDialog();
+                            if (x.deb <= dD && x.fin >= dF && x.numChambre.nbLits >= nbPersonnes)
+                            {
+                                String info = "- Id Offre (pour votre réservation) : " + x.idOffre + "\n -" + " Numéro Chambre et nombre de lits : " + x.numChambre.numChambre + " | " + x.numChambre.nbLits + " lits";
+                                Form1 form = new Form1(x, x.numChambre.imageURL, info);
+                                form.ShowDialog();
+                            }
                             
                         }
                         break;
