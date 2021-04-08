@@ -50,7 +50,7 @@ namespace HotelWebService
             String cmd = "10";
             while (cmd != "0")
             {
-                Console.WriteLine("Saisir le chiffre correspondant à la fonctionnalité désiré :" + "\n" +  "0 : Quittez l'application"  + "\n" + "1 : Afficher les offres disponibles de notre agence (sans image)" + "\n" + "2 : Afficher les offres disponible de notre agence (avec image)" + "\n" + "3 : Afficher les offres disponible de notre agence (avec GUI)" + "\n" + "4 : Sélectionnez votre offre et passez réservation");
+                Console.WriteLine("Saisir le chiffre correspondant à la fonctionnalité désiré :" + "\n" + "0 : Quittez l'application" + "\n" + "1 : Afficher les offres disponibles de notre agence (sans image)" + "\n" + "2 : Afficher les offres disponible de notre agence (avec image téléchargez : vérifiez le PATH)" + "\n" + "3 : Afficher les offres disponible de notre agence selon vos dates (avec GUI)" + "\n" + "4 : Afficher toutes les offres disponible (avec GUI)" + "\n" + "5 : Sélectionnez votre offre et passez réservation");
                 cmd = Console.ReadLine();
                 switch (cmd)
                 {
@@ -88,8 +88,8 @@ namespace HotelWebService
                         listOffres = new List<ServiceDisponibilite.Offre>(tabOffres);
                         foreach (ServiceDisponibilite.Offre x in listOffres)
                         {
-                            if (x.deb <= dD && x.fin >= dF && x.numChambre.nbLits>= nbPersonnes)
-                            Console.WriteLine("- Id Offre (pour votre réservation) : " + x.idOffre + "\n -" + " Numéro Chambre et nombre de lits : " + x.numChambre.numChambre + " | " +  x.numChambre.nbLits+ " lits" + "\n -" +  "Prix Total : " + x.prixTotalOffre + "\n");
+                            if (x.deb <= dD && x.fin >= dF && x.numChambre.nbLits >= nbPersonnes)
+                                Console.WriteLine("- Id Offre (pour votre réservation) : " + x.idOffre + "\n -" + " Numéro Chambre et nombre de lits : " + x.numChambre.numChambre + " | " + x.numChambre.nbLits + " lits" + "\n -" + "Prix Total : " + x.prixTotalOffre + "\n");
                         }
                         break;
 
@@ -143,14 +143,30 @@ namespace HotelWebService
                         {
                             if (x.deb <= dD && x.fin >= dF && x.numChambre.nbLits >= nbPersonnes)
                             {
-                                String info = "- Id Offre (pour votre réservation) : " + x.idOffre + "\n -" + " Numéro Chambre et nombre de lits : " + x.numChambre.numChambre + " | " + x.numChambre.nbLits + " lits";
+                                String info = " Photo de la chambre (ci-dessous) et Nombre de lits : " + x.numChambre.nbLits + " lits";
                                 Form1 form = new Form1(x, x.numChambre.imageURL, info);
                                 form.ShowDialog();
                             }
-                            
+
                         }
                         break;
                     case "4":
+
+                        Console.WriteLine("Entrez le nombre de personnes : ");
+                        nbPersonnes = Convert.ToInt32(Console.ReadLine());
+                        tabOffres = hotel.AfficherOffreDisponibleGUI(login, mdp, date1, date2, nbPersonnes);
+                        listOffres = new List<ServiceDisponibilite.Offre>(tabOffres);
+                        Console.WriteLine("Notre système de GUI va bientôt apparaitre, veuillez patientez");
+                        foreach (ServiceDisponibilite.Offre x in listOffres)
+                        {
+
+                            String info = " Photo de la chambre (ci-dessous) et Nombre de lits : " + x.numChambre.nbLits + " lits";
+                            Form1 form = new Form1(x, x.numChambre.imageURL, info);
+                            form.ShowDialog();
+
+                        }
+                        break;
+                    case "5":
                         Console.WriteLine("Veuillez entrez l'ID de l'offre choisis, votre nom, votre prénom, le nombre de personne et votre numéro de carte bancaire pour la réservation");
                         idOffre = Console.ReadLine();
                         nom = Console.ReadLine();
@@ -166,7 +182,7 @@ namespace HotelWebService
 
 
 
-            
+
         }
     }
 }

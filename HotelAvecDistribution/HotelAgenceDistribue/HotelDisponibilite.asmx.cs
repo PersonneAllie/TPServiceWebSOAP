@@ -68,6 +68,11 @@ namespace HotelAgenceDistribue
             listTemp.Add(offreTest3);
             listTemp.Add(offreTest4);
 
+            offreGUI1.prixTotalOffre = Convert.ToInt32((offreGUI1.fin - offreGUI1.deb).TotalDays * (hotelPasCher.prixNuit + (agencePartenaire1.commissionAgence * hotelPasCher.prixNuit)));
+            offreGUI2.prixTotalOffre = Convert.ToInt32((offreGUI2.fin - offreGUI2.deb).TotalDays * (hotelPasCher.prixNuit + (agencePartenaire1.commissionAgence * hotelPasCher.prixNuit)));
+            offreGUI3.prixTotalOffre = Convert.ToInt32((offreGUI3.fin - offreGUI3.deb).TotalDays * (hotelPasCher.prixNuit + (agencePartenaire1.commissionAgence * hotelPasCher.prixNuit)));
+            offreGUI4.prixTotalOffre = Convert.ToInt32((offreGUI4.fin - offreGUI4.deb).TotalDays * (hotelPasCher.prixNuit + (agencePartenaire1.commissionAgence * hotelPasCher.prixNuit)));
+
             listTempGUI.Add(offreGUI1);
             listTempGUI.Add(offreGUI2);
             listTempGUI.Add(offreGUI3);
@@ -121,6 +126,9 @@ namespace HotelAgenceDistribue
         }
 
 
+
+
+
         //Afficher les offres disponible
         [WebMethod(EnableSession = true)]
         public List<Offre> AfficherOffreDisponibleGUI(string login, string password, string dateArrive, string dateDepart, int nbPersonne)
@@ -165,6 +173,12 @@ namespace HotelAgenceDistribue
                 this.agenceChoisis = null;
                 return null;
             }
+        }
+
+        [WebMethod(EnableSession = true)]
+        public Hotel getHotel()
+        {
+            return this.hotelPasCher;
         }
 
 

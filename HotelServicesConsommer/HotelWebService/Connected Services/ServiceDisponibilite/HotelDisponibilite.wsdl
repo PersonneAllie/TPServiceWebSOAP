@@ -96,6 +96,32 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getHotel">
+        <s:complexType />
+      </s:element>
+      <s:element name="getHotelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getHotelResult" type="tns:Hotel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Hotel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ListChambres" type="tns:ArrayOfTypeChambre" />
+          <s:element minOccurs="0" maxOccurs="1" name="nomHotel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="adresseHotel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ville" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paysHotel" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="nbEtoiles" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="prixNuit" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTypeChambre">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TypeChambre" nillable="true" type="tns:TypeChambre" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="faireReservation">
         <s:complexType>
           <s:sequence>
@@ -136,6 +162,12 @@
   <wsdl:message name="AfficherOffreDisponibleGUISoapOut">
     <wsdl:part name="parameters" element="tns:AfficherOffreDisponibleGUIResponse" />
   </wsdl:message>
+  <wsdl:message name="getHotelSoapIn">
+    <wsdl:part name="parameters" element="tns:getHotel" />
+  </wsdl:message>
+  <wsdl:message name="getHotelSoapOut">
+    <wsdl:part name="parameters" element="tns:getHotelResponse" />
+  </wsdl:message>
   <wsdl:message name="faireReservationSoapIn">
     <wsdl:part name="parameters" element="tns:faireReservation" />
   </wsdl:message>
@@ -154,6 +186,10 @@
     <wsdl:operation name="AfficherOffreDisponibleGUI">
       <wsdl:input message="tns:AfficherOffreDisponibleGUISoapIn" />
       <wsdl:output message="tns:AfficherOffreDisponibleGUISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getHotel">
+      <wsdl:input message="tns:getHotelSoapIn" />
+      <wsdl:output message="tns:getHotelSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="faireReservation">
       <wsdl:input message="tns:faireReservationSoapIn" />
@@ -182,6 +218,15 @@
     </wsdl:operation>
     <wsdl:operation name="AfficherOffreDisponibleGUI">
       <soap:operation soapAction="http://tempuri.org/AfficherOffreDisponibleGUI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHotel">
+      <soap:operation soapAction="http://tempuri.org/getHotel" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -221,6 +266,15 @@
     </wsdl:operation>
     <wsdl:operation name="AfficherOffreDisponibleGUI">
       <soap12:operation soapAction="http://tempuri.org/AfficherOffreDisponibleGUI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHotel">
+      <soap12:operation soapAction="http://tempuri.org/getHotel" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

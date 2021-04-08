@@ -79,6 +79,12 @@
     <None Include="Connected Services\ServiceDisponibilite\HotelWebService.ServiceDisponibilite.faireReservationResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceDisponibilite\HotelWebService.ServiceDisponibilite.getHotelResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceDisponibilite\HotelWebService.ServiceDisponibilite.Hotel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceDisponibilite\HotelWebService.ServiceDisponibilite.Offre.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
