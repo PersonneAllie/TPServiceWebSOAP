@@ -68,6 +68,11 @@ namespace HotelAgenceDistribue
             listTemp.Add(offreTest3);
             listTemp.Add(offreTest4);
 
+            offreTest1.prixTotalOffre = Convert.ToInt32((offreTest1.fin - offreTest1.deb).TotalDays * (hotelPasCher.prixNuit + (agencePartenaire1.commissionAgence * hotelPasCher.prixNuit)));
+            offreTest2.prixTotalOffre = Convert.ToInt32((offreTest2.fin - offreTest2.deb).TotalDays * (hotelPasCher.prixNuit + (agencePartenaire1.commissionAgence * hotelPasCher.prixNuit)));
+            offreTest3.prixTotalOffre = Convert.ToInt32((offreTest3.fin - offreTest3.deb).TotalDays * (hotelPasCher.prixNuit + (agencePartenaire1.commissionAgence * hotelPasCher.prixNuit)));
+            offreTest4.prixTotalOffre = Convert.ToInt32((offreTest4.fin - offreTest4.deb).TotalDays * (hotelPasCher.prixNuit + (agencePartenaire1.commissionAgence * hotelPasCher.prixNuit)));
+
             offreGUI1.prixTotalOffre = Convert.ToInt32((offreGUI1.fin - offreGUI1.deb).TotalDays * (hotelPasCher.prixNuit + (agencePartenaire1.commissionAgence * hotelPasCher.prixNuit)));
             offreGUI2.prixTotalOffre = Convert.ToInt32((offreGUI2.fin - offreGUI2.deb).TotalDays * (hotelPasCher.prixNuit + (agencePartenaire1.commissionAgence * hotelPasCher.prixNuit)));
             offreGUI3.prixTotalOffre = Convert.ToInt32((offreGUI3.fin - offreGUI3.deb).TotalDays * (hotelPasCher.prixNuit + (agencePartenaire1.commissionAgence * hotelPasCher.prixNuit)));
