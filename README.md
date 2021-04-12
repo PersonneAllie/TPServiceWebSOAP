@@ -27,7 +27,7 @@ pouvoir :
         * Type de chambre : nombre de lits.
         * Date de disponibilité.
         * Prix.
-    
+
    * Service web 2 : Effectuer une réservation où :
    * Les données en entrée du service web concernent :
    * Identifiant de l’agence.
