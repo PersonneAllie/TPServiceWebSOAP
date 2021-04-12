@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
 
 namespace HotelAgenceDistribue
@@ -16,25 +15,43 @@ namespace HotelAgenceDistribue
     [System.ComponentModel.ToolboxItem(false)]
     // Pour autoriser l'appel de ce service Web depuis un script à l'aide d'ASP.NET AJAX, supprimez les marques de commentaire de la ligne suivante. 
     // [System.Web.Script.Services.ScriptService]
-     public class HotelDisponibilite : System.Web.Services.WebService
+    public class HotelDisponibilite : System.Web.Services.WebService
     {
+
         private IFormatProvider culture = new CultureInfo("en-US", false);
 
-        public static string path = "C:\\Users\\beaug\\Desktop\\M1S2\\ArchiDistrib\\assets\\";
 
-        public Hotel hotelPasCher = new Hotel("IbisBudget","230 Avenue des roses","Montpellier","France",2,35);
+        /// <summary>
+        ///  J'ai supprimé tes initialisations static ci dessous par d'autre dans depuis la bdd dans le constructeur.
+        ///  Il faudrait que tu fasse une méthode pour update la bdd avec des requetes du style "Update Hotel ..."
+        ///  Comme ça, le constructeur récupère toujours la dernière version.
+        ///  Si jamais tu veux refaire un truc propre, tu supprime le fichier database.db
+        ///  le createDatabase() se charge de le refaire... c'est fait salement mais au moins tu a une bdd XD !
+        /// </summary>
+
+        public static string path = @"E:\github.com\PersonneAllie-TPServiceWebSOAP\assets\";
+        public static string DB_NAME_FILENAME = "database.db";
+        public static string DB_INSERT_FILENAME = "insert.sql";
+        public static string DB_CREATE_FILENAME = "drop_create.sql";
+        public static string pathDB_NAME_FILENME = path + DB_NAME_FILENAME;
+        private static string dataSource = @"Data Source=" + pathDB_NAME_FILENME;
+        private static SQLiteConnection myConnection = new SQLiteConnection(dataSource);
+
 
         public Agence agenceChoisis = new Agence();
-        public Agence agencePartenaire1 = new Agence(1, "Agence des Oliviers", "87 Route des eaux, Montpellier", (float)0.2, "loginAgence1", "admin1");
-        public Agence agencePartenaire2 = new Agence(2, "Agence des Roses", "187 Avenue des eaux, Anger", (float)0.1, "loginAgence2", "admin2");
 
-        public TypeChambre chambre1 = new TypeChambre(0, 2);
-        public TypeChambre chambre2 = new TypeChambre(1, 1);
-        public TypeChambre chambre3 = new TypeChambre(2, 3);
-        public TypeChambre chambre4 = new TypeChambre(3, 4);
-        public TypeChambre chambre5 = new TypeChambre(4, 2);
+        public Hotel hotelPasCher;
 
-        public DateTime deb1 =  DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false));
+        public Agence agencePartenaire1;
+        public Agence agencePartenaire2;
+
+        public TypeChambre chambre1;
+        public TypeChambre chambre2;
+        public TypeChambre chambre3;
+        public TypeChambre chambre4;
+        public TypeChambre chambre5;
+
+        public DateTime deb1 = DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false));
         public DateTime fin1 = DateTime.ParseExact("10/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false));
 
         public DateTime deb2 = DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false));
@@ -42,19 +59,33 @@ namespace HotelAgenceDistribue
 
         public Offre offreTest1 = new Offre("IbisBudget-1", new TypeChambre(0, 2, path + "chambre1.png"), DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("10/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 40);
         public Offre offreTest2 = new Offre("IbisBudget-2", new TypeChambre(1, 1, path + "chambre2.png"), DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("10/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 40);
-        public Offre offreTest3 = new Offre("IbisBudget-3",new TypeChambre(2, 3, path + "chambre2.png"), DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 90);
+        public Offre offreTest3 = new Offre("IbisBudget-3", new TypeChambre(2, 3, path + "chambre2.png"), DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 90);
         public Offre offreTest4 = new Offre("IbisBudget-4", new TypeChambre(3, 4, path + "chambre1.png"), DateTime.ParseExact("09/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("13/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 200);
-        
+
         public Offre offreGUI1 = new Offre("IbisBudget-1", new TypeChambre(0, 2, "https://lemistral.eu/wp-content/uploads/quintuple/chambre-quintuple-chambre-3-lits-768x432.jpg", ""), DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("10/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 40);
         public Offre offreGUI2 = new Offre("IbisBudget-2", new TypeChambre(1, 1, "https://www.usine-digitale.fr/mediatheque/3/9/8/000493893_homePageUne/hotel-c-o-q-paris.jpg", ""), DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("10/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 40);
-        public Offre offreGUI3 = new Offre("IbisBudget-3", new TypeChambre(2, 3, "https://media-cdn.tripadvisor.com/media/photo-s/09/75/9f/d5/mariafe-inn.jpg",""), DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 90);
-        public Offre offreGUI4 = new Offre("IbisBudget-4", new TypeChambre(3, 4, "https://www.vendee-hotel-restaurant.com/wp-content/uploads/2014/10/IMG_9063-700x467.jpg",""), DateTime.ParseExact("09/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("13/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 200);
+        public Offre offreGUI3 = new Offre("IbisBudget-3", new TypeChambre(2, 3, "https://media-cdn.tripadvisor.com/media/photo-s/09/75/9f/d5/mariafe-inn.jpg", ""), DateTime.ParseExact("03/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("06/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 90);
+        public Offre offreGUI4 = new Offre("IbisBudget-4", new TypeChambre(3, 4, "https://www.vendee-hotel-restaurant.com/wp-content/uploads/2014/10/IMG_9063-700x467.jpg", ""), DateTime.ParseExact("09/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("13/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 200);
 
         public List<Offre> listTemp = new List<Offre>();
         public List<Offre> listTempGUI = new List<Offre>();
 
         public HotelDisponibilite()
         {
+            routineInitDatabase();
+
+            hotelPasCher = GetHotelFromDB(0);
+
+            agencePartenaire1 = GetAgenceFromDB(1);
+            agencePartenaire2 = GetAgenceFromDB(2);
+
+            chambre1 = GetTypeChambreFromDB(0);
+            chambre2 = GetTypeChambreFromDB(1);
+            chambre3 = GetTypeChambreFromDB(2);
+            chambre4 = GetTypeChambreFromDB(3);
+            chambre5 = GetTypeChambreFromDB(4);
+
+
             agencePartenaire1.HotelPartenaire.Add(hotelPasCher);
             agencePartenaire2.HotelPartenaire.Add(hotelPasCher);
             hotelPasCher.ListChambres.Add(chambre1);
@@ -85,20 +116,31 @@ namespace HotelAgenceDistribue
 
         }
 
+        private void routineInitDatabase()
+        {
+            OpenConnection();
+            if (!File.Exists(pathDB_NAME_FILENME))
+            {
+                SQLiteConnection.CreateFile(pathDB_NAME_FILENME);
+            }
+            OpenConnection();
+            createDatabase();
+        }
+
         //Afficher les offres disponible
-        [WebMethod (EnableSession =true)]
-        public List<Offre> AfficherOffreDisponible(string login, string password,string dateArrive, string dateDepart,int nbPersonne)
+        [WebMethod(EnableSession = true)]
+        public List<Offre> AfficherOffreDisponible(string login, string password, string dateArrive, string dateDepart, int nbPersonne)
         {
 
             DateTime dt1 = DateTime.ParseExact(dateArrive, "dd/MM/yyyy", culture);
             DateTime dt2 = DateTime.ParseExact(dateDepart, "dd/MM/yyyy", culture);
-            this.agenceChoisis =  checkConnexion(login, password);
+            agenceChoisis = checkConnexion(login, password);
             List<Offre> Listres = new List<Offre>();
-            if (this.agenceChoisis != null)
+            if (agenceChoisis != null)
             {
-                
+
                 Listres = listTemp;
-                
+
             }
             else
             {
@@ -115,9 +157,9 @@ namespace HotelAgenceDistribue
 
             DateTime dt1 = DateTime.ParseExact(dateArrive, "dd/MM/yyyy", culture);
             DateTime dt2 = DateTime.ParseExact(dateDepart, "dd/MM/yyyy", culture);
-            this.agenceChoisis = checkConnexion(login, password);
+            agenceChoisis = checkConnexion(login, password);
             List<Offre> Listres = new List<Offre>();
-            if (this.agenceChoisis != null)
+            if (agenceChoisis != null)
             {
                 Listres = listTemp;
 
@@ -141,9 +183,9 @@ namespace HotelAgenceDistribue
 
             DateTime dt1 = DateTime.ParseExact(dateArrive, "dd/MM/yyyy", culture);
             DateTime dt2 = DateTime.ParseExact(dateDepart, "dd/MM/yyyy", culture);
-            this.agenceChoisis = checkConnexion(login, password);
+            agenceChoisis = checkConnexion(login, password);
             List<Offre> Listres = new List<Offre>();
-            if (this.agenceChoisis != null)
+            if (agenceChoisis != null)
             {
 
                 Listres = listTempGUI;
@@ -160,22 +202,22 @@ namespace HotelAgenceDistribue
 
         public Agence checkConnexion(string log, string mdp)
         {
-            if(log.Equals("loginAgence1") && mdp.Equals("admin1"))
+            if (log.Equals("loginAgence1") && mdp.Equals("admin1"))
             {
                 Console.WriteLine("Agence 1 bien connecté ! ");
-                this.agenceChoisis = this.agencePartenaire1;
+                agenceChoisis = agencePartenaire1;
                 return agenceChoisis;
             }
-            else if(log.Equals("loginAgence2") && mdp.Equals("admin2"))
+            else if (log.Equals("loginAgence2") && mdp.Equals("admin2"))
             {
                 Console.WriteLine("Agence 2 bien connecté ! ");
-                this.agenceChoisis = this.agencePartenaire2;
+                agenceChoisis = agencePartenaire2;
                 return agenceChoisis;
             }
             else
             {
                 Console.WriteLine("Echec connexion ! ");
-                this.agenceChoisis = null;
+                agenceChoisis = null;
                 return null;
             }
         }
@@ -183,13 +225,13 @@ namespace HotelAgenceDistribue
         [WebMethod(EnableSession = true)]
         public Hotel getHotel()
         {
-            return this.hotelPasCher;
+            return hotelPasCher;
         }
 
 
         public void afficherOffre(List<Offre> list)
         {
-            foreach(Offre x in list)
+            foreach (Offre x in list)
             {
                 Console.WriteLine("- Id Offre : " + x.idOffre + "\n -" + " Chambre :" + x.numChambre + "\n -" + "Prix Total : " + x.prixTotalOffre + "(Prix base =" + hotelPasCher.prixNuit + " + commision Agence = " + agenceChoisis.commissionAgence + ")");
             }
@@ -208,8 +250,8 @@ namespace HotelAgenceDistribue
 
             foreach (TypeChambre i in hotelPasCher.ListChambres)
             {
-                prix = hotelPasCher.prixNuit +  (hotelPasCher.prixNuit * agenceChoisis.commissionAgence);
-                offreTemp = new Offre(hotelPasCher.nomHotel + r.Next(40), i,deb,fin, prix);
+                prix = hotelPasCher.prixNuit + (hotelPasCher.prixNuit * agenceChoisis.commissionAgence);
+                offreTemp = new Offre(hotelPasCher.nomHotel + r.Next(40), i, deb, fin, prix);
                 testList.Add(offreTemp);
             }
 
@@ -245,9 +287,92 @@ namespace HotelAgenceDistribue
             return resFinal;
         }
 
-      
+        public static void OpenConnection()
+        {
+            if (myConnection.State != System.Data.ConnectionState.Open)
+            {
+                myConnection.Open();
+            }
+        }
+        public static void CloseConnection()
+        {
+            if (myConnection.State != System.Data.ConnectionState.Closed)
+            {
+                myConnection.Close();
+            }
+        }
+        private static void createDatabase()
+        {
+            string createTables = File.ReadAllText(path + DB_CREATE_FILENAME);
+            string insertRows = File.ReadAllText(path + DB_INSERT_FILENAME);
+            SQLiteCommand command = new SQLiteCommand(createTables, myConnection);
+            command.ExecuteNonQuery();
+            command = new SQLiteCommand(insertRows, myConnection);
+            command.ExecuteNonQuery();
+        }
+        public static Hotel GetHotelFromDB(int identifiant)
+        {
+            Hotel hotelARetourner = new Hotel();
+            SQLiteCommand command;
+            SQLiteDataReader dataReader;
+            string sql = "SELECT * FROM Hotel H WHERE H.idHotel = " + identifiant.ToString();
+            command = new SQLiteCommand(sql, myConnection);
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                hotelARetourner.nomHotel = dataReader.GetString(1);
+                hotelARetourner.adresseHotel = dataReader.GetString(2);
+                hotelARetourner.ville = dataReader.GetString(3);
+                hotelARetourner.paysHotel = dataReader.GetString(4);
+                hotelARetourner.nbEtoiles = dataReader.GetInt32(5);
+                hotelARetourner.prixNuit = dataReader.GetFloat(6);
+            }
+            dataReader.Close();
+            return hotelARetourner;
+        }
 
+        private static TypeChambre GetTypeChambreFromDB(int identifiant)
+        {
+            TypeChambre typeChambreARetourner = new TypeChambre();
+            SQLiteCommand command;
+            SQLiteDataReader dataReader;
+            string sql = "SELECT * FROM TypeChambre TC WHERE TC.numChambre = " + identifiant.ToString();
+            command = new SQLiteCommand(sql, myConnection);
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                typeChambreARetourner.numChambre = dataReader.GetInt32(0);
+                typeChambreARetourner.nbLits = dataReader.GetInt32(1);
+                typeChambreARetourner.imageURL = dataReader.GetString(2);
+                typeChambreARetourner.image = typeChambreARetourner.StreamToByteArray(typeChambreARetourner.imageURL);
+            }
+            dataReader.Close();
+            return typeChambreARetourner;
+        }
+        private static Agence GetAgenceFromDB(int identifiant)
+        {
 
+            Agence agenceARetourner = new Agence();
+            SQLiteCommand command;
+            SQLiteDataReader dataReader;
+            string sql = "SELECT * FROM Agence A WHERE A.idAgence = " + identifiant.ToString();
+            command = new SQLiteCommand(sql, myConnection);
+            dataReader = command.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                agenceARetourner.idAgence = dataReader.GetInt32(0);
+                agenceARetourner.nomAgence = dataReader.GetString(1);
+                agenceARetourner.adresse = dataReader.GetString(2);
+                agenceARetourner.commissionAgence = dataReader.GetFloat(3);
+                agenceARetourner.Login = dataReader.GetString(4);
+                agenceARetourner.Password = dataReader.GetString(5);
+            }
+
+            dataReader.Close();
+
+            return agenceARetourner;
+        }
 
     }
 }

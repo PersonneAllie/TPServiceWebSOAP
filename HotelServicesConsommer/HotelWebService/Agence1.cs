@@ -12,7 +12,7 @@ namespace HotelWebService
     {
         private readonly static string login = "loginAgence1";
         private readonly static string mdp = "admin1";
-        public static ServiceDisponibilite.HotelDisponibiliteSoapClient hotel = new ServiceDisponibilite.HotelDisponibiliteSoapClient();
+        public static ServiceDisponibilite.HotelDisponibilite hotel = new ServiceDisponibilite.HotelDisponibilite();
 
         public static Image byteArrayToImage(byte[] bytesArr)
         {

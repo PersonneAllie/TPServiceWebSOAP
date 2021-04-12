@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace HotelAgenceDistribue
 {
@@ -19,19 +16,19 @@ namespace HotelAgenceDistribue
 
         }
 
-        public Offre(string id, TypeChambre chambre,DateTime deb, DateTime fin, double prix)
+        public Offre(string id, TypeChambre chambre, DateTime deb, DateTime fin, double prix)
         {
-            this.idOffre = id;
-            this.numChambre = chambre;
+            idOffre = id;
+            numChambre = chambre;
             this.deb = deb;
             this.fin = fin;
-            this.prixTotalOffre = prix;
+            prixTotalOffre = prix;
 
         }
 
         public override string ToString()
         {
-            return "Référence de l'offre : " +  this.idOffre + "\n -" + "Nombre de lits présent : " + this.numChambre.nbLits + "\n -" + this.deb + "\n -" + this.fin + "\n -" + this.prixTotalOffre;
+            return "Référence de l'offre : " + idOffre + "\n -" + "Nombre de lits présent : " + numChambre.nbLits + "\n -" + deb + "\n -" + fin + "\n -" + prixTotalOffre;
         }
     }
 }

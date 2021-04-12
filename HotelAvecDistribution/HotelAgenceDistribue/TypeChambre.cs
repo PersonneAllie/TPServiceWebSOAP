@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace HotelAgenceDistribue
 {
@@ -16,44 +15,44 @@ namespace HotelAgenceDistribue
         public TypeChambre() { }
         public TypeChambre(int num, int nbLits)
         {
-            this.numChambre = num;
+            numChambre = num;
             this.nbLits = nbLits;
-            this.ListReservations = new List<Reservation>();
+            ListReservations = new List<Reservation>();
         }
 
-        public TypeChambre(int num, int nbLits,string imageUrl)
+        public TypeChambre(int num, int nbLits, string imageUrl)
         {
-            this.numChambre = num;
+            numChambre = num;
             this.nbLits = nbLits;
-            this.imageURL = imageUrl;
+            imageURL = imageUrl;
             image = StreamToByteArray(imageURL);
-            this.ListReservations = new List<Reservation>();
+            ListReservations = new List<Reservation>();
         }
 
-        public TypeChambre(int num, int nbLits,string imageUrl,string gui)
+        public TypeChambre(int num, int nbLits, string imageUrl, string gui)
         {
-            this.numChambre = num;
+            numChambre = num;
             this.nbLits = nbLits;
-            this.imageURL = imageUrl;
-            this.ListReservations = new List<Reservation>();
+            imageURL = imageUrl;
+            ListReservations = new List<Reservation>();
         }
 
         public void ajoutReservation(Reservation r)
         {
-            this.ListReservations.Add(r);
+            ListReservations.Add(r);
         }
 
         public void retraitReservation(Reservation r)
         {
             if (DateTime.Now > r.dateDepart)
             {
-                this.ListReservations.Remove(r);
+                ListReservations.Remove(r);
             }
         }
 
         public void ToStringListReservation()
         {
-            foreach (Reservation z in this.ListReservations)
+            foreach (Reservation z in ListReservations)
             {
                 Console.WriteLine(z.ToString());
             }
@@ -75,16 +74,16 @@ namespace HotelAgenceDistribue
 
             else
             {
-                foreach (Reservation r in this.ListReservations)
+                foreach (Reservation r in ListReservations)
                 {
                     DateTime dateDebut = r.dateArrivee;
                     DateTime dateFin = r.dateDepart;
 
-                     bool occupee =((debut.CompareTo(dateDebut) >= 0 & fin.CompareTo(dateFin) <= 0)//cas 1 de reservation dans la période 
-                                   | (debut.CompareTo(dateDebut) < 0 & fin.CompareTo(dateFin) > 0)//cas 2 de reservation avant et et après la période 
-                                   | (debut.CompareTo(dateDebut) < 0 & fin.CompareTo(dateFin) <= 0)//cas 3 de reservation avant la période et qui se termine pendant
-                                   | (debut.CompareTo(dateDebut) >= 0 & fin.CompareTo(dateFin) < 0)//cas 4 de reservation pendant la période mais que se termine avant
-                                   );
+                    bool occupee = ((debut.CompareTo(dateDebut) >= 0 & fin.CompareTo(dateFin) <= 0)//cas 1 de reservation dans la période 
+                                  | (debut.CompareTo(dateDebut) < 0 & fin.CompareTo(dateFin) > 0)//cas 2 de reservation avant et et après la période 
+                                  | (debut.CompareTo(dateDebut) < 0 & fin.CompareTo(dateFin) <= 0)//cas 3 de reservation avant la période et qui se termine pendant
+                                  | (debut.CompareTo(dateDebut) >= 0 & fin.CompareTo(dateFin) < 0)//cas 4 de reservation pendant la période mais que se termine avant
+                                  );
                     //La chambre est occuper pendant la période
                     if (occupee)
                     {
@@ -123,7 +122,7 @@ namespace HotelAgenceDistribue
 
         public override string ToString()
         {
-            return "Numéro : " + this.numChambre + " | " + "Nombre de lits : " + this.nbLits;
+            return "Numéro : " + numChambre + " | " + "Nombre de lits : " + nbLits;
         }
     }
 }

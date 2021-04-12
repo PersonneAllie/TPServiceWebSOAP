@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace HotelAgenceDistribue
 {
@@ -18,18 +17,19 @@ namespace HotelAgenceDistribue
         public Hotel(String newNomHotel, String newAdresse, String newVille, String newPays, int nbEtoiles, float prix)
         {
             idHotel += 1;
-            this.ListChambres = new List<TypeChambre>();
-            this.nomHotel = newNomHotel;
-            this.adresseHotel = newAdresse;
-            this.ville = newVille;
-            this.paysHotel = newPays;
+            ListChambres = new List<TypeChambre>();
+            nomHotel = newNomHotel;
+            adresseHotel = newAdresse;
+            ville = newVille;
+            paysHotel = newPays;
             this.nbEtoiles = nbEtoiles;
-            this.prixNuit = prix;
+            prixNuit = prix;
         }
 
         public Hotel()
         {
 
+            ListChambres = new List<TypeChambre>();
         }
 
 
@@ -38,42 +38,42 @@ namespace HotelAgenceDistribue
             var rand = new Random();
             int numChambre = 0;
             int x = rand.Next(10, 40);
-            for(int i = 0; i < x; i++)
+            for (int i = 0; i < x; i++)
             {
                 int lits = rand.Next(1, 4);
                 TypeChambre chambre = new TypeChambre(numChambre, lits);
                 numChambre += 1;
-                this.ListChambres.Add(chambre);
+                ListChambres.Add(chambre);
 
             }
         }
 
         public void afficherChambre()
         {
-            foreach(TypeChambre x in this.ListChambres)
+            foreach (TypeChambre x in ListChambres)
             {
                 Console.WriteLine(x.ToString());
             }
         }
 
-     /*   public Chambre chambreDisponible(DateTime debut, DateTime fin, int nbLits)
-        {
-            foreach(Chambre x in this.ListChambres)
-            {
-                if(x.nbLits >= nbLits)
-                {
-                    return x;
-                }
-            }
-          
-            return null;
-        }*/
+        /*   public Chambre chambreDisponible(DateTime debut, DateTime fin, int nbLits)
+           {
+               foreach(Chambre x in this.ListChambres)
+               {
+                   if(x.nbLits >= nbLits)
+                   {
+                       return x;
+                   }
+               }
+
+               return null;
+           }*/
 
         public TypeChambre chambreDisponible(DateTime debut, DateTime fin, int nbLits)
         {
             TypeChambre z = null;
-                foreach (TypeChambre x in this.ListChambres)
-            {   
+            foreach (TypeChambre x in ListChambres)
+            {
                 //vérifie si la chambre est disponible
                 if (x.estDisponible(debut, fin, nbLits))
                 {
@@ -82,12 +82,12 @@ namespace HotelAgenceDistribue
 
             }
             //l'hotel n'as pas de chambre (vide) ou elles sont toute occupé pendant la période
-            return z; 
+            return z;
         }
 
         public TypeChambre Reserver(Reservation r)
         {
-            TypeChambre chambre = this.chambreDisponible(r.dateArrivee, r.dateDepart, r.nbPersonne);
+            TypeChambre chambre = chambreDisponible(r.dateArrivee, r.dateDepart, r.nbPersonne);
             TypeChambre z = null;
             if (chambre.Equals(z))
             {   //pas de chambre disponible
@@ -103,10 +103,10 @@ namespace HotelAgenceDistribue
 
         public override string ToString()
         {
-            return base.ToString() + "\n - " + this.nomHotel + "\n - " + this.adresseHotel + "\n - " + this.ville + "\n - " + this.paysHotel + "\n - " + this.nbEtoiles + "\n - " + this.prixNuit;
+            return base.ToString() + "\n - " + nomHotel + "\n - " + adresseHotel + "\n - " + ville + "\n - " + paysHotel + "\n - " + nbEtoiles + "\n - " + prixNuit;
         }
 
 
-      
+
     }
 }

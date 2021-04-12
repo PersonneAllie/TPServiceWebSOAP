@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace HotelAgenceDistribue
 {
@@ -19,14 +18,14 @@ namespace HotelAgenceDistribue
         public Reservation(String newNomClient, String newPrenomClient, int newNumCarteBancaire, DateTime newDateArrivee, DateTime newDateDepart, int newNbPersonne, double PrixTotal)
         {
             idReservation += 1;
-            this.nomClient = newNomClient;
-            this.prenomClient = newPrenomClient;
-            this.dateArrivee = newDateArrivee;
-            this.dateDepart = newDateDepart;
-            this.numCarteBancaire = newNumCarteBancaire;
-            this.nbPersonne = newNbPersonne;
-            this.dureeSejour = (dateDepart - dateArrivee).Days;
-            this.prixTotal = PrixTotal;
+            nomClient = newNomClient;
+            prenomClient = newPrenomClient;
+            dateArrivee = newDateArrivee;
+            dateDepart = newDateDepart;
+            numCarteBancaire = newNumCarteBancaire;
+            nbPersonne = newNbPersonne;
+            dureeSejour = (dateDepart - dateArrivee).Days;
+            prixTotal = PrixTotal;
         }
 
         public Reservation()
@@ -36,7 +35,7 @@ namespace HotelAgenceDistribue
 
         public override string ToString()
         {
-            return  "Nom : " + this.nomClient + "\n - " + "Prénom : " + this.prenomClient + "\n - " + this.dateArrivee + "\n - " + this.dateDepart + "\n - " + "Prix total de votre réservation : " + this.prixTotal;
+            return "Nom : " + nomClient + "\n - " + "Prénom : " + prenomClient + "\n - " + dateArrivee + "\n - " + dateDepart + "\n - " + "Prix total de votre réservation : " + prixTotal;
         }
 
         public void reservationHotel(List<Hotel> resList, List<Hotel> baseList)
@@ -74,7 +73,7 @@ namespace HotelAgenceDistribue
                     //si elle n'existe pas/la reservation n'a pas pu etre effectuer renvoie null
                     TypeChambre chambre = x.Reserver(res);
 
-                    if (chambre.Equals(z)==false)
+                    if (chambre.Equals(z) == false)
                     {
                         //info hotel
                         Console.WriteLine(x.ToString());
@@ -96,7 +95,7 @@ namespace HotelAgenceDistribue
 
         }
 
-       
+
 
     }
 }

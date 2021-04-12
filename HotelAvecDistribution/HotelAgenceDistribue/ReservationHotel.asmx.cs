@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
 
 namespace HotelAgenceDistribue
@@ -36,35 +34,33 @@ namespace HotelAgenceDistribue
         public Offre offreTest4 = new Offre("IbisBudget-4", new TypeChambre(3, 4), DateTime.ParseExact("09/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), DateTime.ParseExact("13/04/2021", "dd/MM/yyyy", new CultureInfo("en-US", false)), 200);
 
         public List<Offre> listTemp = new List<Offre>();
+        private HotelDisponibilite hotel = new HotelDisponibilite();
 
-
-        HotelDisponibilite hotel = new HotelDisponibilite();
-
-        [WebMethod (EnableSession = true)]
-        public Reservation faireReservation(string login, string password, string idOffre, string nomPersonne, string prenom, int numeroCB,int nbPersonne)
+        [WebMethod(EnableSession = true)]
+        public Reservation faireReservation(string login, string password, string idOffre, string nomPersonne, string prenom, int numeroCB, int nbPersonne)
         {
-            
-            
+
+
             hotel.checkConnexion(login, password);
             Reservation resFinal = new Reservation();
 
-                foreach (Offre x in hotel.listTemp)
-                {
-                    
-                    if (x.idOffre == idOffre)
-                    {
-                        
-                        Reservation res = new Reservation(nomPersonne, prenom, numeroCB, x.deb, x.fin, nbPersonne, x.prixTotalOffre);
-                        resFinal = res;
-                        //recherche la premiere chambre libre et fais la reservation 
-                        //si elle n'existe pas/la reservation n'a pas pu etre effectuer renvoie null
-                        TypeChambre chambre = hotel.hotelPasCher.Reserver(res);
-                        return resFinal;
-                    }
-                }
-            return resFinal;
-            }
+            foreach (Offre x in hotel.listTemp)
+            {
 
+                if (x.idOffre == idOffre)
+                {
+
+                    Reservation res = new Reservation(nomPersonne, prenom, numeroCB, x.deb, x.fin, nbPersonne, x.prixTotalOffre);
+                    resFinal = res;
+                    //recherche la premiere chambre libre et fais la reservation 
+                    //si elle n'existe pas/la reservation n'a pas pu etre effectuer renvoie null
+                    TypeChambre chambre = hotel.hotelPasCher.Reserver(res);
+                    return resFinal;
+                }
+            }
+            return resFinal;
         }
+
+    }
 
 }

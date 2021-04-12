@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace HotelAgenceDistribue
 {
@@ -19,12 +18,12 @@ namespace HotelAgenceDistribue
         public Recherche(String newVilleDeSejour, DateTime newDateArrivee, DateTime newDateDepart, int newIntervalleBas, int newIntervalleHaut, int nbEtoiles, int nbPersonnes)
         {
             idRecherche += 1;
-            this.villeDeSejour = newVilleDeSejour;
-            this.DateArrivee = newDateArrivee;
-            this.DateDepart = newDateDepart;
-            this.intervallePrixBas = newIntervalleBas;
-            this.intervallePrixHaut = newIntervalleHaut;
-            this.nbEtoilesVoulu = nbEtoiles;
+            villeDeSejour = newVilleDeSejour;
+            DateArrivee = newDateArrivee;
+            DateDepart = newDateDepart;
+            intervallePrixBas = newIntervalleBas;
+            intervallePrixHaut = newIntervalleHaut;
+            nbEtoilesVoulu = nbEtoiles;
             this.nbPersonnes = nbPersonnes;
 
         }
@@ -66,12 +65,12 @@ namespace HotelAgenceDistribue
 
             //Gestion pays
 
-            foreach(Hotel x in res.ToList())
+            foreach (Hotel x in res.ToList())
             {
-                if(!(x.paysHotel.Equals(pays)))
+                if (!(x.paysHotel.Equals(pays)))
                 {
                     research.Remove(x);
-                   // Console.WriteLine(x.ToString());
+                    // Console.WriteLine(x.ToString());
                 }
             }
 
@@ -83,7 +82,7 @@ namespace HotelAgenceDistribue
                 if (x.nbEtoiles < nbEtoiles)
                 {
                     research.Remove(x);
-                   // Console.WriteLine(x.ToString());
+                    // Console.WriteLine(x.ToString());
                 }
             }
 
@@ -105,7 +104,8 @@ namespace HotelAgenceDistribue
             foreach (Hotel x in res.ToList())
             {
                 TypeChambre z = null;
-                if(x.chambreDisponible(dateArrivee,dateDepart,nbPersonnes).Equals(z)) {
+                if (x.chambreDisponible(dateArrivee, dateDepart, nbPersonnes).Equals(z))
+                {
                     research.Remove(x);
                 }
             }

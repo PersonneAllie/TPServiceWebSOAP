@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HotelAgenceDistribue
 {
@@ -14,9 +12,9 @@ namespace HotelAgenceDistribue
         public Client(String newNomClient, String newPrenomClient, int newNumeroCarteBancaire)
         {
             idClient += 1;
-            this.nomClient = newNomClient;
-            this.prenomClient = newPrenomClient;
-            this.numeroCarteBancaire = newNumeroCarteBancaire;
+            nomClient = newNomClient;
+            prenomClient = newPrenomClient;
+            numeroCarteBancaire = newNumeroCarteBancaire;
         }
 
         public Client()

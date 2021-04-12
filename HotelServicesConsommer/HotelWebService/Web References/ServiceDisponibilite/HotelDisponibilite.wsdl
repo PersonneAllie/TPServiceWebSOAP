@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AfficherOffreDisponible">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateArrive" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateDepart" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="nbPersonne" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AfficherOffreDisponibleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AfficherOffreDisponibleResult" type="tns:ArrayOfOffre" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOffre">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Offre" nillable="true" type="tns:Offre" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Offre">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idOffre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="numChambre" type="tns:TypeChambre" />
+          <s:element minOccurs="1" maxOccurs="1" name="deb" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fin" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="prixTotalOffre" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TypeChambre">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="numChambre" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="nbLits" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="imageURL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="image" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="ListReservations" type="tns:ArrayOfReservation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfReservation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Reservation" nillable="true" type="tns:Reservation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Reservation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="nomClient" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="prenomClient" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="dateArrivee" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="dateDepart" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="numCarteBancaire" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="nbPersonne" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="dureeSejour" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="prixTotal" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AfficherOffreDisponibleAvecImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateArrive" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateDepart" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="nbPersonne" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AfficherOffreDisponibleAvecImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AfficherOffreDisponibleAvecImageResult" type="tns:ArrayOfOffre" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AfficherOffreDisponibleGUI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateArrive" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateDepart" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="nbPersonne" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AfficherOffreDisponibleGUIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AfficherOffreDisponibleGUIResult" type="tns:ArrayOfOffre" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getHotel">
+        <s:complexType />
+      </s:element>
+      <s:element name="getHotelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getHotelResult" type="tns:Hotel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Hotel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ListChambres" type="tns:ArrayOfTypeChambre" />
+          <s:element minOccurs="0" maxOccurs="1" name="nomHotel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="adresseHotel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ville" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paysHotel" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="nbEtoiles" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="prixNuit" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTypeChambre">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TypeChambre" nillable="true" type="tns:TypeChambre" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="faireReservation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idOffre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nomPersonne" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="prenom" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="numeroCB" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nbPersonne" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="faireReservationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="faireReservationResult" type="tns:Reservation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AfficherOffreDisponibleSoapIn">
+    <wsdl:part name="parameters" element="tns:AfficherOffreDisponible" />
+  </wsdl:message>
+  <wsdl:message name="AfficherOffreDisponibleSoapOut">
+    <wsdl:part name="parameters" element="tns:AfficherOffreDisponibleResponse" />
+  </wsdl:message>
+  <wsdl:message name="AfficherOffreDisponibleAvecImageSoapIn">
+    <wsdl:part name="parameters" element="tns:AfficherOffreDisponibleAvecImage" />
+  </wsdl:message>
+  <wsdl:message name="AfficherOffreDisponibleAvecImageSoapOut">
+    <wsdl:part name="parameters" element="tns:AfficherOffreDisponibleAvecImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="AfficherOffreDisponibleGUISoapIn">
+    <wsdl:part name="parameters" element="tns:AfficherOffreDisponibleGUI" />
+  </wsdl:message>
+  <wsdl:message name="AfficherOffreDisponibleGUISoapOut">
+    <wsdl:part name="parameters" element="tns:AfficherOffreDisponibleGUIResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHotelSoapIn">
+    <wsdl:part name="parameters" element="tns:getHotel" />
+  </wsdl:message>
+  <wsdl:message name="getHotelSoapOut">
+    <wsdl:part name="parameters" element="tns:getHotelResponse" />
+  </wsdl:message>
+  <wsdl:message name="faireReservationSoapIn">
+    <wsdl:part name="parameters" element="tns:faireReservation" />
+  </wsdl:message>
+  <wsdl:message name="faireReservationSoapOut">
+    <wsdl:part name="parameters" element="tns:faireReservationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="HotelDisponibiliteSoap">
+    <wsdl:operation name="AfficherOffreDisponible">
+      <wsdl:input message="tns:AfficherOffreDisponibleSoapIn" />
+      <wsdl:output message="tns:AfficherOffreDisponibleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AfficherOffreDisponibleAvecImage">
+      <wsdl:input message="tns:AfficherOffreDisponibleAvecImageSoapIn" />
+      <wsdl:output message="tns:AfficherOffreDisponibleAvecImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AfficherOffreDisponibleGUI">
+      <wsdl:input message="tns:AfficherOffreDisponibleGUISoapIn" />
+      <wsdl:output message="tns:AfficherOffreDisponibleGUISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getHotel">
+      <wsdl:input message="tns:getHotelSoapIn" />
+      <wsdl:output message="tns:getHotelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="faireReservation">
+      <wsdl:input message="tns:faireReservationSoapIn" />
+      <wsdl:output message="tns:faireReservationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HotelDisponibiliteSoap" type="tns:HotelDisponibiliteSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AfficherOffreDisponible">
+      <soap:operation soapAction="http://tempuri.org/AfficherOffreDisponible" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AfficherOffreDisponibleAvecImage">
+      <soap:operation soapAction="http://tempuri.org/AfficherOffreDisponibleAvecImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AfficherOffreDisponibleGUI">
+      <soap:operation soapAction="http://tempuri.org/AfficherOffreDisponibleGUI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHotel">
+      <soap:operation soapAction="http://tempuri.org/getHotel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="faireReservation">
+      <soap:operation soapAction="http://tempuri.org/faireReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HotelDisponibiliteSoap12" type="tns:HotelDisponibiliteSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AfficherOffreDisponible">
+      <soap12:operation soapAction="http://tempuri.org/AfficherOffreDisponible" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AfficherOffreDisponibleAvecImage">
+      <soap12:operation soapAction="http://tempuri.org/AfficherOffreDisponibleAvecImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AfficherOffreDisponibleGUI">
+      <soap12:operation soapAction="http://tempuri.org/AfficherOffreDisponibleGUI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHotel">
+      <soap12:operation soapAction="http://tempuri.org/getHotel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="faireReservation">
+      <soap12:operation soapAction="http://tempuri.org/faireReservation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HotelDisponibilite">
+    <wsdl:port name="HotelDisponibiliteSoap" binding="tns:HotelDisponibiliteSoap">
+      <soap:address location="https://localhost:44379/HotelDisponibilite.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HotelDisponibiliteSoap12" binding="tns:HotelDisponibiliteSoap12">
+      <soap12:address location="https://localhost:44379/HotelDisponibilite.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

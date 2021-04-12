@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace HotelAgenceDistribue
 {
@@ -19,21 +16,22 @@ namespace HotelAgenceDistribue
         private List<Client> clientAgence;
 
 
-        public Agence(int id, string nom, string adresse, float com,string login, string password)
+        public Agence(int id, string nom, string adresse, float com, string login, string password)
         {
-            this.hotelPartenaire = new List<Hotel>();
-            this.clientAgence = new List<Client>();
-            this.idAgence = id;
-            this.nomAgence = nom;
+            hotelPartenaire = new List<Hotel>();
+            clientAgence = new List<Client>();
+            idAgence = id;
+            nomAgence = nom;
             this.adresse = adresse;
-            this.commissionAgence = com;
+            commissionAgence = com;
             this.login = login;
             this.password = password;
         }
 
         public Agence()
         {
-
+            hotelPartenaire = new List<Hotel>();
+            clientAgence = new List<Client>();
         }
 
 

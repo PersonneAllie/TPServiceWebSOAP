@@ -1,0 +1,13 @@
+insert into Agence (idAgence, nomAgence, adresse, commissionAgence, login, password) values (1, 'Agence des Oliviers', '87 Route des eaux, Montpellier', 0.2, 'loginAgence1', 'admin1');
+insert into Agence (idAgence, nomAgence, adresse, commissionAgence, login, password) values (2, 'Agence des Roses', '187 Avenue des eaux, Anger', 0.2, 'loginAgence2', 'admin2');
+insert into Client (idClient, nomClient, prenomClient, numeroCarteBancaire, idAgence) values (0, 'Hayaat', 'Hebiret', '4041370647224', 1);
+insert into Client (idClient, nomClient, prenomClient, numeroCarteBancaire, idAgence) values (1, 'Denis', 'Beauget', '4041370332628437', 1);
+insert into Hotel (idHotel, nomHotel, adresseHotel, ville, paysHotel, nbEtoiles, prixNuit) values (0, 'IbisBudget', '230 Avenue des roses', 'Montpellier', 'France', 2, 35);
+insert into TypeChambre (numChambre, nbLits, imageURL, image, idHotel) values (0, 2, "E:\github.com\PersonneAllie-TPServiceWebSOAP\assets\chambre1.png", '', 0);
+insert into TypeChambre (numChambre, nbLits, imageURL, image, idHotel) values (1, 1, "E:\github.com\PersonneAllie-TPServiceWebSOAP\assets\chambre2.png", '', 0);
+insert into TypeChambre (numChambre, nbLits, imageURL, image, idHotel) values (2, 3, "E:\github.com\PersonneAllie-TPServiceWebSOAP\assets\chambre2.png", '', 0);
+insert into TypeChambre (numChambre, nbLits, imageURL, image, idHotel) values (3, 4, "E:\github.com\PersonneAllie-TPServiceWebSOAP\assets\chambre1.png", '', 0);
+insert into TypeChambre (numChambre, nbLits, imageURL, image, idHotel) values (4, 2, "E:\github.com\PersonneAllie-TPServiceWebSOAP\assets\chambre2.png", '', 0);
+insert into Reservation (idReservation, nomClient, prenomClient, datedebut, datefin, cartecredit, nbpersonne, dureeSejour, prixTotal, numChambre) values (1, 'Mayhow', 'Bax', 'foobarDateDebut', 'foobarDateFin', 'foobarCarteCredit', 3, 6, 4, 1);
+insert into Est_Partenaire (idHotel, idAgence) values (0, 1);
+insert into Est_Partenaire (idHotel, idAgence) values (0, 2);
